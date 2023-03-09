@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const ssr = require('../middleware/ssr');
 const sessionConfig = require('./sessionConfig');
-// const getUser = require('../middleware/getUser');
+const getAdmin = require('../middleware/getAdmin');
 
 const config = (app) => {
   app.use(express.json());
@@ -12,7 +12,7 @@ const config = (app) => {
   app.use(cookieParser());
   app.use(session(sessionConfig));
   app.use(ssr);
-
-  // app.use(getUser);
+  app.use(getAdmin);
 };
+
 module.exports = config;

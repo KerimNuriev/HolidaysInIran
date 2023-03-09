@@ -5,11 +5,11 @@ function Header(): JSX.Element {
   return (
     <header>
       <div>
-        <Link to="/">Home</Link>
-        <Link to="/tour8">8 дней</Link>
-        <Link to="/tour10">10 дней</Link>
-        <Link to="/mytour">Свой тур</Link>
-        <Link to="/faq">FAQ</Link>
+        <Link style={{margin: 10}} to="/">Home</Link>
+        <Link style={{margin: 10}} to="/tour8">8 дней</Link>
+        <Link style={{margin: 10}} to="/tour10">10 дней</Link>
+        <Link style={{margin: 10}} to="/mytour">Свой тур</Link>
+        <Link style={{margin: 10}} to="/faq">FAQ</Link>
       </div>
       <br />
       <br />
