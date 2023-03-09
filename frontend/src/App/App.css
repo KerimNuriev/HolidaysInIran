@@ -39,3 +39,8 @@
     transform: skew(0deg) translateX(-200px);
   }
 }
+
+.citySlider {
+  display: flex;
+  justify-content: center;
+}
