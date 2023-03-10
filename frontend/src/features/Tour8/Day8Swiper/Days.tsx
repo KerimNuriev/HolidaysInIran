@@ -35,6 +35,7 @@ return (
                      spaceBetween: 50,
                    },
                  } }>
+                        
                 <SwiperSlide><DayCard/></SwiperSlide>
                 <SwiperSlide><img src="/image/day-2.jpg" alt="" style={{width: 150, height: 100}}/></SwiperSlide>
                 <SwiperSlide><img src="/image/day-3.jpg" alt="" style={{width: 200, height: 100}}/></SwiperSlide>

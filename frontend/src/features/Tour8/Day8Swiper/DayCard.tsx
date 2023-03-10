@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 function DayCard(): JSX.Element{
   return (
     <Card className="bg-dark text-white">
-      <Card.Img src="holder.js/100px270" alt="Card image" />
+      <Card.Img src="/image/day-1.jpg" alt="Card image" />
       <Card.ImgOverlay>
         <Card.Title>Card title</Card.Title>
         <Card.Text>

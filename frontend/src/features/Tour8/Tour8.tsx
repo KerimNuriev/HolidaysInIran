@@ -1,5 +1,5 @@
 import React from "react"
-import Days from "./Day-Slayder_8/Days"
+import Days from "./Day8Swiper/Days"
 
 
 function Tour8 (): JSX.Element {
