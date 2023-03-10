@@ -11,9 +11,7 @@ import MyTour from '../features/MyTour/MyTour';
 import Faq from '../features/Faq/Faq';
 import './App.scss';
 import 'swiper/css';
-// import 'swiper/swiper.scss'; // core Swiper
-// import 'swiper/modules/navigation/navigation.scss'; // Navigation module
-// import 'swiper/modules/pagination/pagination.scss'; // Pagination module
+
 
 
 function App(): JSX.Element {
