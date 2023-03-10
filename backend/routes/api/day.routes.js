@@ -7,9 +7,6 @@ router
     try {
       const days = await Day.findAll({
         order: [['createdAt', 'DESC']],
-        where: {
-          done: true,
-        },
       });
       res.json(days);
     } catch (error) {
