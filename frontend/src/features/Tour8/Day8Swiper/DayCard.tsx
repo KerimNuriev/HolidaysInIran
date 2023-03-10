@@ -1,17 +1,16 @@
-import React from 'react'
+import React  from 'react'
 import Card from 'react-bootstrap/Card';
+import type DayType from './types/DayType';
 
-function DayCard(): JSX.Element{
+function DayCard({ day }: { day: DayType }): JSX.Element{
+ 
   return (
-    <Card className="bg-dark text-white">
-      <Card.Img src="/image/day-1.jpg" alt="Card image" />
+    <Card style={{width: '25rem'}} >
+      <Card.Img src={day.image} alt="Card image"/>
       <Card.ImgOverlay>
-        <Card.Title>Card title</Card.Title>
-        <Card.Text>
-          This is a wider card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
-        </Card.Text>
-        <Card.Text>Last updated 3 mins ago</Card.Text>
+      {day.number_day} день:
+        <Card.Title>{day.title_city}</Card.Title>
+        {day.shortDescription}
       </Card.ImgOverlay>
     </Card>
   );
