@@ -9,7 +9,7 @@ const PORT = process.env.PORT ?? 4000;
 
 config(app);
 
-// app.use('/', router)
+// app.use();
 
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT}, port `);
