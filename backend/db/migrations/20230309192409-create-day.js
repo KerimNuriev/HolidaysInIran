@@ -17,6 +17,14 @@ module.exports = {
         },
         onDelete: 'CASCADE',
       },
+      number_day: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      title_city: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
       image: {
         allowNull: false,
         type: Sequelize.TEXT,

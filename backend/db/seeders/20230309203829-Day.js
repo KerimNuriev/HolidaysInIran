@@ -1,10 +1,157 @@
+const { Day } = require('../models');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert(
-      'Day', [{ 'key model' }], {});
+  async up(queryInterface) {
+    await Day.bulkCreate([
+      {
+        tourId: 1,
+        number_day: 1,
+        title_city: 'KASHAHN/YAZD',
+        image: '/image/day-1.jpg',
+        shortDescription: 'Просмотр: Подземный город Ноошабад, Кашан исторические дома, Розовая вода, Мастерская', 
+        description: 'Прибытие ранним утромв IKA Аэропорт, покупка Иранской сим-карты(необязательно),Ресторан (для завтрака), Кашан - осмотр достопримечательностей, отъезд в Йезд, O/N в отеле в Йезде',
+      },
+      {
+        tourId: 1,
+        number_day: 2,
+        title_city: 'YAZD/MAYBOD',
+        image: '/image/day-2.jpg',
+        shortDescription: 'Просмотр: Мэйбод-Нарин замок, Голубиная Башня, Шахабасси Карван-сарай и… Вечерняя прогулка: пески пустыни и катание на верблюдах(необязательно)',
+        description: 'После завтрака отправляемся в Мэйбод на осмотр достопримечательностей, вечером идем в пустыню, о/п в отеле в г.Йезд',
+      },
+      {
+        tourId: 1,
+        number_day: 3,
+        title_city: 'YAZD/TAFT',
+        image: '/image/day-3.jpg',
+        shortDescription: 'Просмотр: Зороастрийский огонь(Храм), Башня Тишина, Доулатабад Сад, исторические части города, вечер Тафт, деревня Мобараке',
+        description: 'После завтрака посещение достопримечательностей исторического города Йезд, вечер в деревне Мобараке в Тафт, ночлег в гостинице в г.Йезд',
+      },
+      {
+        tourId: 1,
+        number_day: 4,
+        title_city: 'SHIRAZ',
+        image: '/image/day-4.jpg',
+        shortDescription: 'Просмотр: посещение старого кипариса дерево Абаркух, Пасаргад и Нагш-е Ростам',
+        description: 'После завтрака трансфер в Шираз, ночь в гостинице в Шираз',
+      },
+      {
+        tourId: 1,
+        number_day: 5,
+        title_city: 'SHIRAZ',
+        image: '/image/day-5.jpg',
+        shortDescription: 'Просмотр: Насир-уль-Молк мечеть, Наренджестан Кавамский сад, Арге Каримхани(снаружи), Старая баня Вакила и Базар, Могила Хафеза',
+        description: 'После завтрака: Достопримечательности Шираза, ночь в гостинице в Шираз',
+      },
+      {
+        tourId: 1,
+        number_day: 6,
+        title_city: 'ISFAHAN',
+        image: '/image/day-6.jpg',
+        shortDescription: 'Просмотр: Посещение Персеполис, столица г.Ахемениды Империя',
+        description: 'После завтрака выезд в Исфахан, по маршруту в гостях Персеполь, о/н в отель в Исфахане',
+      },
+      {
+        tourId: 1,
+        number_day: 7,
+        title_city: 'ISFAHAN',
+        image: '/image/day-7.jpg',
+        shortDescription: 'Просмотр: Ванкская церковь, Накш-э Джахан Квадрат, Исфахан мосты, Традиционная Персидская баня',
+        description: 'Достопримечательности Исфахана, ночлег в отеле в Исфахан',
+      },
+      {
+        tourId: 1,
+        number_day: 8,
+        title_city: 'IKA AIRPORT',
+        image: '/image/day-10.jpg',
+        shortDescription: 'Покидаем Иран с хорошими воспоминаниями',
+        description: 'После завтрака выезд в IKA аэропорт',
+      },
+      {
+        tourId: 2,
+        number_day: 1,
+        title_city: 'KASHAHN/YAZD',
+        image: '/image/day-1.jpg',
+        shortDescription: 'Просмотр: Подземный город Ноошабад, Кашан исторические дома, Розовая вода, Мастерская',
+        description: 'Прибытие ранним утромв IKA Аэропорт, покупка Иранской сим-карты(необязательно),Ресторан (для завтрака), Кашан - осмотр достопримечательностей, отъезд в Йезд, O/N в отеле в Йезде',
+      },
+      {
+        tourId: 2,
+        number_day: 2,
+        title_city: 'YAZD/MAYBOD',
+        image: '/image/day-2.jpg',
+        shortDescription: 'Просмотр: Мэйбод-Нарин замок, Голубиная Башня, Шахабасси Карван-сарай и… Вечерняя прогулка: пески пустыни и катание на верблюдах(необязательно)',
+        description: 'После завтрака отправляемся в Мэйбод на осмотр достопримечательностей, вечером идем в пустыню, о/п в отеле в г.Йезд',
+      },
+      {
+        tourId: 2,
+        number_day: 3,
+        title_city: 'YAZD/TAFT',
+        image: '/image/day-3.jpg',
+        shortDescription: 'Просмотр: Зороастрийский огонь(Храм), Башня Тишина, Доулатабад Сад, исторические части города, вечер Тафт, деревня Мобараке',
+        description: 'После завтрака посещение достопримечательностей исторического города Йезд, вечер в деревне Мобараке в Тафт, ночлег в гостинице в г.Йезд',
+      },
+      {
+        tourId: 2,
+        number_day: 4,
+        title_city: 'SHIRAZ',
+        image: '/image/day-4.jpg',
+        shortDescription: 'Просмотр: посещение старого кипариса дерево Абаркух, Пасаргад и Нагш-е Ростам',
+        description: 'После завтрака трансфер в Шираз, ночь в гостинице в Шираз',
+      },
+      {
+        tourId: 2,
+        number_day: 5,
+        title_city: 'SHIRAZ',
+        image: '/image/day-5.jpg',
+        shortDescription: 'Просмотр: Насир-уль-Молк мечеть, Наренджестан Кавамский сад, Арге Каримхани(снаружи), Старая баня Вакила и Базар, Могила Хафеза',
+        description: 'После завтрака: Достопримечательности Шираза, ночь в гостинице в Шираз',
+      },
+      {
+        tourId: 2,
+        number_day: 6,
+        title_city: 'ISFAHAN',
+        image: '/image/day-6.jpg',
+        shortDescription: 'Просмотр: Посещение Персеполис, столица г.Ахемениды Империя',
+        description: 'После завтрака выезд в Исфахан, по маршруту в гостях Персеполь, о/н в отель в Исфахане',
+      },
+      {
+        tourId: 2,
+        number_day: 7,
+        title_city: 'ISFAHAN',
+        image: '/image/day-7.jpg',
+        shortDescription: 'Просмотр: Ванкская церковь, Накш-э Джахан Квадрат, Исфахан мосты, Традиционная Персидская баня',
+        description: 'Достопримечательности Исфахана, ночлег в отеле в Исфахан',
+      },
+      {
+        tourId: 2,
+        number_day: 8,
+        title_city: 'TEHRAN',
+        image: '/image/day-8.jpg',
+        shortDescription: 'Tabia’t (Природа) и мост',
+        description: 'После завтрака трансфер в Тегеран, достопримечательности Тегерана, ночлег в отеле г.Тегеран',
+      },
+      {
+        tourId: 2,
+        number_day: 9,
+        title_city: 'TEHRAN',
+        image: '/image/day-9.jpg',
+        shortDescription: 'Просмотр: Голистенский дворец, Старый базар, Национальный Музей, Милад Башня',
+        description: 'Достопримечательности Тегерана, ночлег в отеле в Тегеране',
+      },
+      {
+        tourId: 2,
+        number_day: 10,
+        title_city: 'IKA AIRPORT',
+        image: '/image/day-10.jpg',
+        shortDescription: 'Покидаем Иран с хорошими воспоминаниями',
+        description: 'После завтрака выезд в IKA аэропорт',
+      },
+    ]);
   },
+
   async down(queryInterface) {
-    await queryInterface.bulkDelete('Days', null, {});
+    await Day.destroy({ truncate: { cascade: true } });
   },
 };

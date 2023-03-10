@@ -12,7 +12,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      price: {
+      price_1: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      price_2: {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
