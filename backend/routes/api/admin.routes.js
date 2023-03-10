@@ -7,9 +7,6 @@ router
     try {
       const admin = await Admin.findAll({
         order: [['createdAt', 'DESC']],
-        where: {
-          done: true,
-        },
       });
       res.json(admin);
     } catch (error) {

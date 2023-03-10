@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Navigation, Pagination } from 'swiper';
 
@@ -11,10 +11,20 @@ import MyTour from '../features/MyTour/MyTour';
 import Faq from '../features/Faq/Faq';
 import './App.scss';
 import 'swiper/css';
+import { useAppDispatch } from '../store';
+import { loadCities } from '../features/Home/CitySwiper/citiesSlice';
 
 
 
 function App(): JSX.Element {
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadCities());
+  }, [dispatch]);
+
+
   return (
     <Routes>
       <Route element={<Layout/>}>

@@ -7,9 +7,6 @@ router
     try {
       const cities = await City.findAll({
         order: [['createdAt', 'DESC']],
-        where: {
-          done: true,
-        },
       });
       res.json(cities);
     } catch (error) {
