@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
+import { Navigation, Pagination } from 'swiper';
+
 import Layout from './Layout'
 import Home from '../features/Home/Home'
 import NotFound from '../features/NotFound/NotFound';
@@ -8,6 +9,12 @@ import Tour8 from '../features/Tour8/Tour8';
 import Tour10 from '../features/Tour10/Tour10';
 import MyTour from '../features/MyTour/MyTour';
 import Faq from '../features/Faq/Faq';
+import './App.scss';
+import 'swiper/css';
+// import 'swiper/swiper.scss'; // core Swiper
+// import 'swiper/modules/navigation/navigation.scss'; // Navigation module
+// import 'swiper/modules/pagination/pagination.scss'; // Pagination module
+
 
 function App(): JSX.Element {
   return (
@@ -24,5 +31,4 @@ function App(): JSX.Element {
     </Routes>
   );
 }
-
 export default App;
