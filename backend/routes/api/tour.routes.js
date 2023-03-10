@@ -5,9 +5,6 @@ router.route('/').get(async (req, res) => {
   try {
     const tours = await Tour.findAll({
       order: [['createdAt', 'DESC']],
-      where: {
-        done: true,
-      },
     });
     res.json(tours);
   } catch (error) {
