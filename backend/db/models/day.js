@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         model: 'Tours',
         key: 'id',
       },
+      onDelete: 'CASCADE',
     },
     image: {
       allowNull: false,

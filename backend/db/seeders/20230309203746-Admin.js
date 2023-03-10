@@ -15,3 +15,4 @@ module.exports = {
     await queryInterface.bulkDelete('Admin', null, {});
   },
 };
+
