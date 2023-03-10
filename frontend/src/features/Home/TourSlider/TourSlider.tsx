@@ -6,26 +6,15 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
 
 
-function CitySlider (): JSX.Element {
+function TourSlider (): JSX.Element {
 
 return (
     <Swiper
-    slidesPerView={1}
-        spaceBetween={30}
-        rewind={true}
-        centeredSlides={false}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-            dynamicBullets: true,
-            clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
+      spaceBetween={500}
+      slidesPerView={3}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
       <SwiperSlide><img src="https://rare-gallery.com/thumbs/349502-4k-wallpaper.jpg"/></SwiperSlide>
       <SwiperSlide><img src="https://rare-gallery.com/thumbs/380108-4k-wallpaper.jpg"/></SwiperSlide>
       <SwiperSlide><img src="https://rare-gallery.com/thumbs/348503-4k-wallpaper.jpg"/></SwiperSlide>
@@ -34,4 +23,4 @@ return (
 )
 }
 
-export default CitySlider
+export default TourSlider
