@@ -5,17 +5,6 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 function Header(): JSX.Element {
   return (
-    // <header>
-    //   <div>
-    //     <Link to="/">Home</Link>
-    //     <Link to="/tour8">8 дней</Link>
-    //     <Link to="/tour10">10 дней</Link>
-    //     <Link to="/mytour">Свой тур</Link>
-    //     <Link to="/faq">FAQ</Link>
-    //   </div>
-    //   <br />
-    //   <br />
-    // </header>
     <>
     {['lg'].map((expand) => (
       <Navbar key={expand} bg="light" expand={expand} className="mb-3">
@@ -65,6 +54,7 @@ function Header(): JSX.Element {
       </Navbar>
     ))}
   </>
+
   );
 }
 
