@@ -16,6 +16,14 @@ module.exports = (sequelize, DataTypes) => {
       },
       onDelete: 'CASCADE',
     },
+    number_day: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    title_city: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
     image: {
       allowNull: false,
       type: DataTypes.TEXT,

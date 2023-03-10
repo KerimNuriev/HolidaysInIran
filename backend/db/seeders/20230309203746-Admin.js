@@ -1,18 +1,19 @@
 const bcrypt = require('bcrypt');
 
+const { Admin } = require('../models');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface) {
-    await queryInterface.bulkInsert('Admin', [{
-      userName: 'Administrator',
-      password: await bcrypt.hash('admin', 10),
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    }], {});
+  async up(queryInterface, Sequelize) {
+    await Admin.bulkCreate([
+      {
+        userName: 'Adminka',
+        password: await bcrypt.hash('123', 10),
+      },
+    ]);
   },
 
   async down(queryInterface) {
-    await queryInterface.bulkDelete('Admin', null, {});
+    await Admin.destroy({ truncate: { cascade: true } });
   },
 };
-
