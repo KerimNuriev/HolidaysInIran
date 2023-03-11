@@ -22,6 +22,8 @@ export const login = createAsyncThunk(
   },
 );
 
+export const logout = createAsyncThunk('admin/logout', api.logout);
+
 // export const register = createAsyncThunk(
 //   'auth/register',
 //   async (data: RegisterData) => {
@@ -63,6 +65,10 @@ const adminSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.admin = action.payload;
         // state.loginFormError = undefined;
+      })
+
+      .addCase(logout.fulfilled, (state) => {
+        state.admin = undefined;
       });
     // 332 так изменяется стэйт если вернулась ошибка
     // .addCase(login.rejected, (state, action) => {

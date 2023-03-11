@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import {
   Button,
   Container,
@@ -15,11 +15,28 @@ import { useSelector } from 'react-redux';
 import logo from '../logo.png';
 import './Header.scss';
 import type { RootState } from '../store';
+import { useAppDispatch } from '../store';
+import { logout } from '../features/admin/adminSlice';
 
 function Header(): JSX.Element {
   const admin = useSelector((state: RootState) => state.admin.admin);
+  console.log(admin);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const tours = useSelector((state: RootState) => state.tours.toursList);
+
+  const handleLogout = React.useCallback(
+    async (event: React.MouseEvent) => {
+      event.preventDefault();
+
+      const dispatchResult = await dispatch(logout());
+      if (logout.fulfilled.match(dispatchResult)) {
+        navigate('/');
+      }
+    },
+    [dispatch, navigate],
+  );
 
   return (
     <div className="header">
@@ -78,6 +95,11 @@ function Header(): JSX.Element {
                   <LinkContainer to="/">
                     <Nav.Link eventKey={14}>{admin?.userName}</Nav.Link>
                   </LinkContainer>
+                  {admin && (
+                    <button type="button" onClick={handleLogout}>
+                      Выйти
+                    </button>
+                  )}
                   <LinkContainer to="/contact">
                     <Nav.Link>
                       <span className="language">Ru</span>
