@@ -30,7 +30,7 @@ footer img {
   margin-bottom: 20px;
 }
 .contact {
-  width: 25%;
+  width: 33%;
 }
 hr {
   border: 0.5px solid #4c4542;
@@ -47,12 +47,15 @@ hr {
   list-style: none;
   text-align: center;
 }
-.footer-logo{
+.footer-logo {
   text-align: left;
 }
 @media screen and (max-width: 768px) {
   .contact {
     width: 50%;
+  }
+  .footer-logo {
+    display: none;
   }
 }
 @media screen and (max-width: 475px) {
@@ -62,8 +65,5 @@ hr {
   .container {
     width: 96%;
     margin: 2em auto;
-  }
-  .footer-logo{
-    text-align: center;
   }
 }

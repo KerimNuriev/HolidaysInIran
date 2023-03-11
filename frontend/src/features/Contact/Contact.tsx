@@ -14,12 +14,22 @@ function Contact(): JSX.Element {
         </div>
         <div className="contact-right">
           <div className="form-block">
-            <form>
-              <input type="text" placeholder="Выберите тур" />
-              <input type="text" placeholder="Выберите тур" />
-              <input type="text" placeholder="Выберите тур" />
-              <button type="button">Отправить</button>
-            </form>
+            <ul className="contact-list">
+              <li>Email:</li>
+              <li>
+                <a href="mailto: mazdeyasna.tourism@gmail.com">
+                  mazdeyasna.tourism@gmail.com
+                </a>
+              </li>
+              <li>WhatsApp</li>
+              <li>
+                <a href="tel: +00989353082974">+00989353082974</a>
+              </li>
+              <li>Telegram</li>
+              <li>
+                <a href="tel: +00989353082974">+00989353082974</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

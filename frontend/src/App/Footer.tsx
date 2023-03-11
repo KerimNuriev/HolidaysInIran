@@ -35,28 +35,6 @@ function Footer(): JSX.Element {
           </ul>
         </div>
         <div className="contact">
-          <ul>
-            <li>
-              <Link to="/">Тегеран</Link>
-            </li>
-            <li>
-              <Link to="/tour8">Исфахан</Link>
-            </li>
-            <li>
-              <Link to="/tour10">Шираз</Link>
-            </li>
-            <li>
-              <Link to="/mytour">Тафт</Link>
-            </li>
-            <li>
-              <Link to="/faq">Майбут</Link>
-            </li>
-            <li>
-              <Link to="/contact">Кашан</Link>
-            </li>
-          </ul>
-        </div>
-        <div className="contact">
           <ul className="contact-list">
             <li>Email:</li>
             <li>
