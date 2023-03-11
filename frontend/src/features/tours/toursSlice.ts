@@ -1,22 +1,22 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type CityState from './types/CityState';
-import * as apiCity from './ApiCitySwiper'
+import type TourState from './types/TourState';
+import * as apiTour from './apiTour'
 
-const initialState: CityState = {
-  citiesList: [],
+const initialState: TourState = {
+  toursList: [],
 };
 
 // thunk - это экшен, который связан с асинхронной операцией (api)
 // const loadNotes = createAsyncThunk('notes/loadNotes', () => api.loadNotes());
-export const loadCities = createAsyncThunk(
+export const loadTours = createAsyncThunk(
   // название экшена (оно нужно для отладки)
-  'citySwiper/loadCities',
+  'tours/loadTours',
   async () => {
-    const cities = await apiCity.loadCities();
+    const tours = await apiTour.loadTours();
     // можем сделать что-то с результатом
 
     // результат этой функции попадёт в payload в extraReducer
-    return cities;
+    return tours;
   },
 );
 
@@ -31,17 +31,17 @@ export const loadCities = createAsyncThunk(
 //   },
 // );
 
-const citiesSlice = createSlice({
-  name: 'citySwiper',
+const toursSlice = createSlice({
+  name: 'tours',
   initialState,
   reducers: {},
   // здесь мы прописываем, что произойдёт со стэйтом после исполнения асинхронной операции (из thunk)
   extraReducers: (builder) => {
     // если loadNotes завершилось успешно (fulfilled)
     builder
-      .addCase(loadCities.fulfilled, (state, action) => {
+      .addCase(loadTours.fulfilled, (state, action) => {
         // то мы делаем вот это со стэйтом
-        state.citiesList = action.payload;
+        state.toursList = action.payload;
       })
     //   .addCase(updateNote.fulfilled, (state, action) => {
     //     // ! - означает гарантию, что такой объект - есть, это - нерекомендуемая практика
@@ -52,4 +52,4 @@ const citiesSlice = createSlice({
   },
 });
 
-export default citiesSlice.reducer;
+export default toursSlice.reducer;

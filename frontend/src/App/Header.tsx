@@ -13,8 +13,12 @@ import {
 import { LinkContainer } from 'react-router-bootstrap';
 import logo from '../logo.png';
 import './Header.scss';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../store';
 
 function Header(): JSX.Element {
+  const admin = useSelector((state: RootState) => state.admin.admin);
+
   return (
     <div className="header">
       {['lg'].map((expand) => (
@@ -24,6 +28,9 @@ function Header(): JSX.Element {
               <Nav.Link eventKey={1}>
                 <img src={logo} className="logo" alt="logo" />
               </Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/">
+              <Nav.Link eventKey={80}>{admin?.userName}</Nav.Link>
             </LinkContainer>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
@@ -45,7 +52,7 @@ function Header(): JSX.Element {
                     title="Туры в Иран"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    <LinkContainer to="/tour8">
+                    <LinkContainer to="/tour/:id">
                       <NavDropdown.Item eventKey={3}>
                         Туры на 8 дней
                       </NavDropdown.Item>
