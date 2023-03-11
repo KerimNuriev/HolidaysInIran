@@ -10,6 +10,7 @@ import TourCard from './TourCard';
 
 function TourSwiper(): JSX.Element {
   const toursList = useSelector((state: RootState) => state.tours.toursList);
+  
 
   return (
     <Swiper

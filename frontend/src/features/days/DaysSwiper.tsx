@@ -13,6 +13,8 @@ import type { RootState } from "../../store";
 function DaysSwiper({oneTour}: {oneTour: TourType}): JSX.Element {
 
 
+
+
 return (
 <>  <h1>Days</h1>
          <Swiper slidesPerView={2} spaceBetween={400} pagination={{

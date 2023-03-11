@@ -23,7 +23,8 @@ function App(): JSX.Element {
   const authChecked = useSelector(
     (state: RootState) => state.admin.authChecked,
   );
-
+  // const admin = useSelector( (state: RootState) => state.admin.admin);
+  
   useEffect(() => {
     dispatch(loadCities());
     dispatch(loadTours());
@@ -31,7 +32,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     dispatch(getAdmin());
-  }, [dispatch]);
+  }, [dispatch, authChecked]);
 
   if (!authChecked) {
     return (
@@ -40,6 +41,7 @@ function App(): JSX.Element {
       </div>
     );
   }
+
 
   return (
     <Routes>

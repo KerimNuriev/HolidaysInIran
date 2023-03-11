@@ -9,8 +9,10 @@ import CityCard from './CityCard';
 import type { RootState } from '../../store';
 import './CitySwiper.scss';
 
-function CitySwiper(): JSX.Element {
-  const citiesList = useSelector((state: RootState) => state.cities.citiesList);
+
+function CitySwiper (): JSX.Element {
+
+const citiesList = useSelector((state: RootState) => state.cities.citiesList)
 
   return (
     <Swiper
@@ -39,4 +41,4 @@ function CitySwiper(): JSX.Element {
   );
 }
 
-export default CitySwiper;
+export default CitySwiper
