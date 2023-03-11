@@ -1,7 +1,8 @@
 // Использование Redux без Redux Toolkit - считается устаревшей практикой
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-import citiesReducer from './features/home/citySwiper/citiesSlice';
+import citiesReducer from './features/Home/CitySwiper/citiesSlice';
+import daysSlice from './features/Tour8/Day8Swiper/DaysSlice';
 
 
 const store = configureStore({
@@ -9,7 +10,8 @@ const store = configureStore({
     // ключ - название раздела (feature)
     // значение - сам редьюсер
     // у каждого раздела сайт свой собственный редьюсер
-    citySwiper: citiesReducer
+    citySwiper: citiesReducer,
+    day8Swiper: daysSlice,
   },
 });
 
