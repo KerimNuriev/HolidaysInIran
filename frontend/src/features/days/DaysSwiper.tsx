@@ -6,14 +6,13 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import { Autoplay, Pagination, Navigation } from "swiper";
 import DayCard from "./DayCard";
+import type TourType from "../tours/types/TourType";
 import type { RootState } from "../../store";
 
 
-function DaysSwiper(): JSX.Element {
+function DaysSwiper({oneTour}: {oneTour: TourType}): JSX.Element {
 
-  const days = useSelector((state: RootState ) => state.day8Swiper.daysList.filter((day) => day.tourId === 1))
-  console.log(days);
-  
+
 return (
 <>  <h1>Days</h1>
          <Swiper slidesPerView={2} spaceBetween={400} pagination={{
@@ -37,7 +36,7 @@ return (
                      spaceBetween: 50,
                    },
                  } }>
-            {days.map((day) => <SwiperSlide key={day.id}><DayCard day={day}/></SwiperSlide>)}  
+            {oneTour.Days?.map((day) => <SwiperSlide key={day.id}><DayCard day={day}/></SwiperSlide>)}  
         </Swiper>
    
 </>

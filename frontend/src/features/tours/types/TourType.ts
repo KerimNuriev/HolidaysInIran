@@ -1,4 +1,5 @@
 import type ScheduleType from "./ScheduleType";
+import type DayType from "../../days/types/DayType";
 
 type TourType = {
     id: number;
@@ -10,6 +11,7 @@ type TourType = {
     shortDescription: string;
     description: string;
     Schedules: ScheduleType[];
+    Days: DayType[];
 }
 
 export default TourType;

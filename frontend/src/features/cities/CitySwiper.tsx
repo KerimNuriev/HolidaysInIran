@@ -11,7 +11,7 @@ import type { RootState } from "../../store";
 
 function CitySlider (): JSX.Element {
 
-const citiesList = useSelector((state: RootState) => state.citySwiper.citiesList)
+const citiesList = useSelector((state: RootState) => state.cities.citiesList)
 
 return (
     <Swiper
