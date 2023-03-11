@@ -1,8 +1,8 @@
-type City = {
+type CityType = {
     id: number;
     cityName: string;
     description: string;
     image: string;
 }
 
-export default City;
+export default CityType;

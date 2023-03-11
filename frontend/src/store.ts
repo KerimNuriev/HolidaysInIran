@@ -1,7 +1,7 @@
 // Использование Redux без Redux Toolkit - считается устаревшей практикой
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-import citiesReducer from './features/Home/CitySwiper/citiesSlice';
+import citiesReducer from './features/home/citySwiper/citiesSlice';
 
 
 const store = configureStore({

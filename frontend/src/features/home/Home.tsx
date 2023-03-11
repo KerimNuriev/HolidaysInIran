@@ -1,6 +1,6 @@
 import React from "react"
-import CitySlider from "./CitySwiper/CitySwiper"
-import TourSlider from "./TourSwiper/TourSwiper"
+import CitySlider from "./citySwiper/CitySwiper"
+import TourSlider from "./tourSwiper/TourSwiper"
 
 function Home (): JSX.Element {
 
