@@ -1,0 +1,25 @@
+.error-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.error-img {
+  width: 50%;
+  margin: auto;
+}
+.error-title {
+  color: #fbe9ff;
+  text-align: center;
+  font-weight: bold;
+  margin-top: -1em;
+  font-size: 3em;
+  text-shadow: 1px 1px 10px rgba(244, 220, 249, 0.5);
+}
+.error-text {
+  color: #fbe9ff;
+  text-align: center;
+  font-weight: bold;
+  margin-top: -0.5em;
+  font-size: 3em;
+  text-shadow: 1px 1px 10px rgba(244, 220, 249, 0.5);
+}
