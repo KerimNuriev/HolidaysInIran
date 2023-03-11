@@ -8,12 +8,7 @@ import { useAppDispatch } from "../../store";
 function Home (): JSX.Element {
 
 
-const dispatch = useAppDispatch()
 
-useEffect(() => {
-  dispatch(loadCities());
-  dispatch(loadTours())
-}, [dispatch]);
 
 return (
 

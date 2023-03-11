@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type CityState from './types/CityState';
-import * as apiCity from './ApiCity'
+import * as apiCity from './apiCity'
 
 const initialState: CityState = {
   citiesList: [],

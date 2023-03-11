@@ -6,12 +6,12 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store";
-import SwiperTourCard from "./TourCard";
+import TourCard from "./TourCard";
 
 
 function TourSlider (): JSX.Element {
 
-const toursList = useSelector((state: RootState) => state.tourSwiper.toursList)
+const toursList = useSelector((state: RootState) => state.tours.toursList)
 
 return (
     <Swiper
@@ -20,7 +20,7 @@ return (
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      {toursList?.map((tour) => <SwiperSlide key={tour.id}><SwiperTourCard tour={tour}/></SwiperSlide>)}
+      {toursList?.map((tour) => <SwiperSlide key={tour.id}><TourCard tour={tour}/></SwiperSlide>)}
       
     </Swiper>
 )
