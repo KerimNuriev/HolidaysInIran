@@ -4,6 +4,7 @@ import TourSwiper from "../tours/TourSwiper"
 import { loadCities } from '../cities/citiesSlice';
 import { loadTours } from '../tours/toursSlice';
 import { useAppDispatch } from "../../store";
+import Form from "../formApplication/Form";
 
 function Home (): JSX.Element {
 
@@ -18,9 +19,10 @@ useEffect(() => {
 return (
 
     <>
-        <div><h1>Ya est home!</h1>  </div>
+        <div><h1>Ya est' home!</h1>  </div>
         <CitySwiper/>
         <br />
+        <Form />
         <br />
         <TourSwiper/>
     </>

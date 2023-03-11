@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Navigation, Pagination } from 'swiper';
 import Layout from './Layout';
