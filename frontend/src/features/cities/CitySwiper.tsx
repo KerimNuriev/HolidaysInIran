@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 import CityCard from './CityCard';
 import type { RootState } from '../../store';
+import './CitySwiper.scss';
 
 function CitySwiper(): JSX.Element {
   const citiesList = useSelector((state: RootState) => state.cities.citiesList);

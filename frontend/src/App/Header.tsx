@@ -29,9 +29,6 @@ function Header(): JSX.Element {
                 <img src={logo} className="logo" alt="logo" />
               </Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/">
-              <Nav.Link eventKey={80}>{admin?.userName}</Nav.Link>
-            </LinkContainer>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -76,14 +73,12 @@ function Header(): JSX.Element {
                   <LinkContainer to="/contact">
                     <Nav.Link>Контакты</Nav.Link>
                   </LinkContainer>
-                  <LinkContainer to="/contact">
-                    <Nav.Link>
-                      <span className="language">Ru</span>
-                    </Nav.Link>
+                  <LinkContainer to="/">
+                    <Nav.Link eventKey={80}>{admin?.userName}</Nav.Link>
                   </LinkContainer>
                   <LinkContainer to="/contact">
                     <Nav.Link>
-                      <span className="language">En</span>
+                      <span className="language">Ru</span>
                     </Nav.Link>
                   </LinkContainer>
                 </Nav>
