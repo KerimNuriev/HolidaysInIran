@@ -9,7 +9,7 @@ import CityCard from "./CityCard";
 import type { RootState } from "../../store";
 
 
-function CitySlider (): JSX.Element {
+function CitySwiper (): JSX.Element {
 
 const citiesList = useSelector((state: RootState) => state.cities.citiesList)
 
@@ -36,4 +36,4 @@ return (
 )
 }
 
-export default CitySlider
+export default CitySwiper
