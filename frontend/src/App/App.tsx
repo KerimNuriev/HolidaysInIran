@@ -12,16 +12,18 @@ import Faq from '../features/faq/Faq';
 import './App.scss';
 import 'swiper/css';
 import { useAppDispatch } from '../store';
-import { loadCities } from '../features/home/citySwiper/citiesSlice';
+import { loadCities } from '../features/cities/citiesSlice';
+import { loadTours } from '../features/tours/toursSlice';
 
 
 
 function App(): JSX.Element {
 
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(loadCities());
+    dispatch(loadTours())
   }, [dispatch]);
 
 

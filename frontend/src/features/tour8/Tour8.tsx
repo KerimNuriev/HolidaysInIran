@@ -1,8 +1,8 @@
 import React, { useEffect } from "react"
 import { useAppDispatch } from "../../store"
-import Days8Swiper from "./Day8Swiper/Days8Swiper"
-import { loadDays } from "./Day8Swiper/DaysSlice";
-
+import DaysSwiper from "../days/DaysSwiper"
+import { loadDays } from "../days/daysSlice";
+import TourSwiper from "../tours/TourSwiper";
 
 
 function Tour8 (): JSX.Element {
@@ -18,7 +18,7 @@ return (
    <h1>Tour8 component</h1>
   </div>
   <div>
-   <Days8Swiper />
+   <DaysSwiper />
    </div>
    </>
  )

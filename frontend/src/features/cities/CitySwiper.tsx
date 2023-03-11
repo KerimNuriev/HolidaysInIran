@@ -4,14 +4,13 @@ import 'swiper/css';
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
-import SwiperCityCard from "./CityCard";
-import { RootState, useAppDispatch } from "../../../store";
 import { useSelector } from "react-redux";
+import CityCard from "./CityCard";
+import type { RootState } from "../../store";
 
 
 function CitySlider (): JSX.Element {
 
-const dispatch = useAppDispatch()
 const citiesList = useSelector((state: RootState) => state.citySwiper.citiesList)
 
 return (
@@ -32,7 +31,7 @@ return (
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-      {citiesList?.map((city) => <SwiperSlide key={city.id}><SwiperCityCard city={city}/></SwiperSlide> )}  
+      {citiesList?.map((city) => <SwiperSlide key={city.id}><CityCard city={city}/></SwiperSlide> )}  
     </Swiper>
 )
 }

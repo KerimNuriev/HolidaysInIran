@@ -1,3 +1,4 @@
+import type ScheduleType from "./ScheduleType";
 
 type TourType = {
     id: number;
@@ -8,8 +9,7 @@ type TourType = {
     image: string;
     shortDescription: string;
     description: string;
-    schedule: Schedule[];
-    days: Day[];
+    Schedules: ScheduleType[];
 }
 
 export default TourType;

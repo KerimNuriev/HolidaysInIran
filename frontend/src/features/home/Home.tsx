@@ -1,16 +1,28 @@
-import React from "react"
-import CitySlider from "./citySwiper/CitySwiper"
-import TourSlider from "./tourSwiper/TourSwiper"
+import React, { useEffect } from "react"
+import CitySwiper from "../cities/CitySwiper"
+import TourSwiper from "../tours/TourSwiper"
+import { loadCities } from '../cities/citiesSlice';
+import { loadTours } from '../tours/toursSlice';
+import { useAppDispatch } from "../../store";
 
 function Home (): JSX.Element {
 
+
+const dispatch = useAppDispatch()
+
+useEffect(() => {
+  dispatch(loadCities());
+  dispatch(loadTours())
+}, [dispatch]);
+
 return (
+
     <>
         <div><h1>Ya est' home!</h1>  </div>
-        <CitySlider/>
+        <CitySwiper/>
         <br></br>
         <br></br>
-        <TourSlider/>
+        <TourSwiper/>
     </>
     )
 }

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type CityState from './types/CityState';
-import * as apiCity from './ApiCitySwiper'
+import * as apiCity from './ApiCity'
 
 const initialState: CityState = {
   citiesList: [],
@@ -10,7 +10,7 @@ const initialState: CityState = {
 // const loadNotes = createAsyncThunk('notes/loadNotes', () => api.loadNotes());
 export const loadCities = createAsyncThunk(
   // название экшена (оно нужно для отладки)
-  'citySwiper/loadCities',
+  'cities/loadCities',
   async () => {
     const cities = await apiCity.loadCities();
     // можем сделать что-то с результатом
@@ -32,7 +32,7 @@ export const loadCities = createAsyncThunk(
 // );
 
 const citiesSlice = createSlice({
-  name: 'citySwiper',
+  name: 'cities',
   initialState,
   reducers: {},
   // здесь мы прописываем, что произойдёт со стэйтом после исполнения асинхронной операции (из thunk)
