@@ -1,5 +1,5 @@
 import React from "react"
-import CitySlider from "./CitySlider/CitySlider"
+import CitySlider from "../cities/CitySwiper"
 import TourSlider from "./TourSlider/TourSlider"
 
 function Home (): JSX.Element {
@@ -7,7 +7,7 @@ function Home (): JSX.Element {
 return (
     <>
         <div><h1>Ya est' home!</h1>  </div>
-        <CitySlider/>
+        <CitySlider />
         <br></br>
         <br></br>
         <TourSlider/>
