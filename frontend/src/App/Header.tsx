@@ -11,6 +11,7 @@ import {
   NavItem,
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import logo from '../logo.png';
 import './Header.scss';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../store';
@@ -19,12 +20,14 @@ function Header(): JSX.Element {
   const admin = useSelector((state: RootState) => state.admin.admin);
 
   return (
-    <>
+    <div className="header">
       {['lg'].map((expand) => (
-        <Navbar key={expand} bg="light" expand={expand} className="mb-3">
+        <Navbar key={expand} expand={expand} className="mb-3">
           <Container fluid>
             <LinkContainer to="/">
-              <Nav.Link eventKey={1}>Logo</Nav.Link>
+              <Nav.Link eventKey={1}>
+                <img src={logo} className="logo" alt="logo" />
+              </Nav.Link>
             </LinkContainer>
             <LinkContainer to="/">
               <Nav.Link eventKey={80}>{admin?.userName}</Nav.Link>
@@ -36,39 +39,52 @@ function Header(): JSX.Element {
               placement="end"
             >
               <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  Offcanvas
-                </Offcanvas.Title>
+                <Offcanvas.Title
+                  id={`offcanvasNavbarLabel-expand-${expand}`}
+                ></Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <LinkContainer to="/">
-                    <Nav.Link eventKey={2}>Home</Nav.Link>
+                    <Nav.Link eventKey={2}>Главная</Nav.Link>
                   </LinkContainer>
                   <NavDropdown
-                    title="Dropdown"
+                    title="Туры в Иран"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
                     <LinkContainer to="/tour/:id">
                       <NavDropdown.Item eventKey={3}>
-                        8 days tour
+                        Туры на 8 дней
                       </NavDropdown.Item>
                     </LinkContainer>
                     <NavDropdown.Divider />
                     <LinkContainer to="/tour10">
                       <NavDropdown.Item eventKey={4}>
-                        10 days tour
+                        Туры на 10 дней
                       </NavDropdown.Item>
                     </LinkContainer>
                     <NavDropdown.Divider />
                     <LinkContainer to="/mytour">
                       <NavDropdown.Item eventKey={5}>
-                        Create my tour
+                        Индивидуальные туры
                       </NavDropdown.Item>
                     </LinkContainer>
                   </NavDropdown>
                   <LinkContainer to="/faq">
-                    <Nav.Link>Information</Nav.Link>
+                    <Nav.Link>Информация для туристов</Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to="/contact">
+                    <Nav.Link>Контакты</Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to="/contact">
+                    <Nav.Link>
+                      <span className="language">Ru</span>
+                    </Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to="/contact">
+                    <Nav.Link>
+                      <span className="language">En</span>
+                    </Nav.Link>
                   </LinkContainer>
                 </Nav>
               </Offcanvas.Body>
@@ -76,7 +92,7 @@ function Header(): JSX.Element {
           </Container>
         </Navbar>
       ))}
-    </>
+    </div>
   );
 }
 
