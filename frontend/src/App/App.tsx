@@ -51,8 +51,8 @@ function App(): JSX.Element {
         <Route path="/mytour" element={<MyTour />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
-      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
