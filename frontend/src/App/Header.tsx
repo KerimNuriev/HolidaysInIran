@@ -26,9 +26,17 @@ function Header(): JSX.Element {
             <LinkContainer to="/">
               <Nav.Link eventKey={1}>Logo</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/">
-              <Nav.Link eventKey={80}>{admin?.userName}</Nav.Link>
-            </LinkContainer>
+            {admin ? (
+              <>
+                <LinkContainer to="/">
+                  <Nav.Link eventKey={80}>{admin?.userName}</Nav.Link>
+                </LinkContainer>
+                <Button type="button">Выход</Button>
+              </>
+            ) : (
+              <></>
+            )}
+
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}

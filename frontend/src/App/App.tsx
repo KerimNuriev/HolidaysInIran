@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Navigation, Pagination } from 'swiper';
 import { useSelector } from 'react-redux';
-import Layout from './Layout';
+import LayoutUser from './LayoutUser';
 import Home from '../features/home/Home';
 import NotFound from '../features/notFound/NotFound';
 import Tour8 from '../features/tour8/Tour8';
@@ -42,7 +42,7 @@ function App(): JSX.Element {
 
   return (
     <Routes>
-      <Route element={<Layout />}>
+      <Route element={<LayoutUser />}>
         <Route path="/" element={<Home />} />
         <Route path="/tour8" element={<Tour8 />} />
         <Route path="/tour10" element={<Tour10 />} />
@@ -50,6 +50,11 @@ function App(): JSX.Element {
         <Route path="/faq" element={<Faq />} />
         <Route path="/admin" element={<Admin />} />
       </Route>
+
+      <Route element={<LayoutUser />}>
+        <Route path="/admin" element={<Admin />} />
+      </Route>
+
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
