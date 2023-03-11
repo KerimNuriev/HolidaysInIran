@@ -20,7 +20,6 @@ import { logout } from '../features/admin/adminSlice';
 
 function Header(): JSX.Element {
   const admin = useSelector((state: RootState) => state.admin.admin);
-  console.log(admin);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
