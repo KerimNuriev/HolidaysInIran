@@ -7,9 +7,9 @@ router.route('/admin').get(async (req, res) => {
   if (admin) {
     res.json({
       isLoggedIn: true,
-      user: {
+      admin: {
         id: admin.id,
-        name: admin.userName,
+        userName: admin.userName,
       },
     });
   } else {
@@ -41,6 +41,7 @@ router.route('/register').post(async (req, res) => {
 router.route('/login').post(async (req, res) => {
   const { userName, password } = req.body;
   const existingAdmin = await Admin.findOne({ where: { userName } });
+  console.log(userName, password);
 
   // проверяем, что такой пользователь есть в БД и пароли совпадают
   if (
