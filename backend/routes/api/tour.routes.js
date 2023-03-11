@@ -1,11 +1,14 @@
 const router = require('express').Router();
-const { Tour } = require('../../db/models');
+const { Tour, Schedule } = require('../../db/models');
+
 
 router.route('/').get(async (req, res) => {
   try {
     const tours = await Tour.findAll({
       order: [['createdAt', 'DESC']],
+      include: [Schedule],
     });
+    console.log(tours[1].Schedules[0]);
     res.json(tours);
   } catch (error) {
     res.json({ error: error.message });

@@ -4,9 +4,14 @@ import 'swiper/css';
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../store";
+import SwiperTourCard from "./TourCard";
 
 
 function TourSlider (): JSX.Element {
+
+const toursList = useSelector((state: RootState) => state.tourSwiper.toursList)
 
 return (
     <Swiper
@@ -15,10 +20,8 @@ return (
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      <SwiperSlide><img src="https://rare-gallery.com/thumbs/349502-4k-wallpaper.jpg"/></SwiperSlide>
-      <SwiperSlide><img src="https://rare-gallery.com/thumbs/380108-4k-wallpaper.jpg"/></SwiperSlide>
-      <SwiperSlide><img src="https://rare-gallery.com/thumbs/348503-4k-wallpaper.jpg"/></SwiperSlide>
-      <SwiperSlide><img src="https://rare-gallery.com/thumbs/917248-village-mountains-landscape-Iran-Rocky-Mountains.jpg"/></SwiperSlide>
+      {toursList?.map((tour) => <SwiperSlide key={tour.id}><SwiperTourCard tour={tour}/></SwiperSlide>)}
+      
     </Swiper>
 )
 }

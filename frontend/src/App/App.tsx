@@ -12,7 +12,8 @@ import Faq from '../features/Faq/Faq';
 import './App.scss';
 import 'swiper/css';
 import { useAppDispatch } from '../store';
-import { loadCities } from '../features/Home/CitySwiper/citiesSlice';
+import { loadCities } from '../features/cities/citiesSlice';
+import { loadTours } from '../features/tours/toursSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
