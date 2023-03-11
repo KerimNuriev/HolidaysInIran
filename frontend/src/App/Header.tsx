@@ -12,8 +12,12 @@ import {
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import './Header.scss';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../store';
 
 function Header(): JSX.Element {
+  const admin = useSelector((state: RootState) => state.admin.admin);
+
   return (
     <>
       {['lg'].map((expand) => (
@@ -21,6 +25,9 @@ function Header(): JSX.Element {
           <Container fluid>
             <LinkContainer to="/">
               <Nav.Link eventKey={1}>Logo</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/">
+              <Nav.Link eventKey={80}>{admin?.userName}</Nav.Link>
             </LinkContainer>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
