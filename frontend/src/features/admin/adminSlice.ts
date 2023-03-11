@@ -9,7 +9,7 @@ const initialState: AuthState = {
   admin: undefined,
 };
 
-export const getAdmin = createAsyncThunk('auth/admin', () => api.admin());
+export const getAdmin = createAsyncThunk('admin/auth', () => api.admin());
 
 export const login = createAsyncThunk(
   'admin/login',

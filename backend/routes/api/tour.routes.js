@@ -1,14 +1,23 @@
 const router = require('express').Router();
-const { Tour, Schedule } = require('../../db/models');
+const { Tour, Schedule, Day} = require('../../db/models');
 
 
 router.route('/').get(async (req, res) => {
   try {
     const tours = await Tour.findAll({
-      order: [['createdAt', 'DESC']],
-      include: [Schedule],
+      order: [['id', 'ASC']],
+      include: [
+        {
+          model: Schedule,
+          order: [['startDay'], 'ASC'],
+        },
+        {
+          order: [['id'], 'DESC'],
+          model: Day,
+        },
+      ],
     });
-    console.log(tours[1].Schedules[0]);
+    console.log(tours[0].Days)
     res.json(tours);
   } catch (error) {
     res.json({ error: error.message });
@@ -39,7 +48,20 @@ router.route('/').get(async (req, res) => {
 //   });
 
 // router
-//   .route('/:id')
+  // .route('/:id')
+  // .get(async (req, res) => {
+  //   try {
+  //     const { id } = req.params;
+  //     const tour = await Tour.findAll({
+  //       where: { id },
+  //       order: [['createdAt', 'DESC']],
+  //       include: [Schedule, Day],
+  //     });
+  //     res.json(tour);
+  //   } catch (error) {
+  //     res.json({ error: error.message });
+  //   }
+  // });
 //   .delete(async (req, res) => {
 //     try {
 //       // удаляем задачу с заданным id

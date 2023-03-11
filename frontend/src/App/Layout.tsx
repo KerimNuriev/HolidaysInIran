@@ -6,11 +6,12 @@ import Moments from './Momets';
 
 function LayoutUser(): JSX.Element {
   return (
-    <div className="App">
+    <div className="wrapper">
       <Header />
-      {/* Этот компонент показывает, что сюда нужно рендерить текущую страницу */}
-      <Outlet />
-      <Moments />
+      <div className="content">
+        <Outlet />
+        <Moments />
+      </div>
       <Footer />
     </div>
   );

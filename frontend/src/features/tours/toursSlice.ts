@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type TourState from './types/TourState';
-import * as apiTour from './ApiTour'
+import * as apiTour from './apiTour'
 
 const initialState: TourState = {
   toursList: [],
