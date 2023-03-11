@@ -6,7 +6,7 @@ router
   .get(async (req, res) => {
     try {
       const cities = await City.findAll({
-        order: [['createdAt', 'DESC']],
+        order: [['id', 'DESC']],
       });
       res.json(cities);
     } catch (error) {

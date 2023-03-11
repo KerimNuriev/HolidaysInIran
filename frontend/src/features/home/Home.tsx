@@ -1,32 +1,19 @@
-import React, { useEffect } from "react"
-import CitySwiper from "../cities/CitySwiper"
-import TourSwiper from "../tours/TourSwiper"
-import { loadCities } from '../cities/citiesSlice';
-import { loadTours } from '../tours/toursSlice';
-import { useAppDispatch } from "../../store";
+import React from 'react';
+import CitySwiper from '../cities/CitySwiper';
+import ToursForm from './ToursForm/ToursForm';
+import TourSwiper from '../tours/TourSwiper';
 import Form from "../formApplication/Form";
-
-function Home (): JSX.Element {
-
-
-const dispatch = useAppDispatch()
-
-useEffect(() => {
-  dispatch(loadCities());
-  dispatch(loadTours())
-}, [dispatch]);
-
-return (
-
+function Home(): JSX.Element {
+  return (
     <>
-        <div><h1>Ya est' home!</h1>  </div>
-        <CitySwiper/>
-        <br />
-        <Form />
-        <br />
-        <TourSwiper/>
+      <CitySwiper />
+      <div className="container">
+        <h1>Ya est' home!</h1>
+        <TourSwiper />
+      </div>
+      <ToursForm />
     </>
-    )
+  );
 }
 
-export default Home
+export default Home;
