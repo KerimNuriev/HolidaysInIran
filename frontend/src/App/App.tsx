@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Navigation, Pagination } from 'swiper';
 import { useSelector } from 'react-redux';
 import Layout from './Layout';
 import Home from '../features/home/Home';
@@ -27,9 +26,8 @@ function App(): JSX.Element {
 
   useEffect(() => {
     dispatch(loadCities());
-    dispatch(loadTours())
+    dispatch(loadTours());
   }, [dispatch]);
-
 
   useEffect(() => {
     dispatch(getAdmin());
@@ -42,7 +40,6 @@ function App(): JSX.Element {
       </div>
     );
   }
-
 
   return (
     <Routes>

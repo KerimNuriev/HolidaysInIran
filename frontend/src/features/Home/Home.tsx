@@ -1,15 +1,15 @@
 import React from 'react';
-import CitySlider from './CitySwiper/CitySwiper';
+import CitySwiper from '../cities/CitySwiper';
 import ToursForm from './ToursForm/ToursForm';
-import TourSlider from './TourSwiper/TourSwiper';
+import TourSwiper from '../tours/TourSwiper';
 
 function Home(): JSX.Element {
   return (
     <>
-      <CitySlider />
+      <CitySwiper />
       <div className="container">
         <h1>Ya est' home!</h1>
-        <TourSlider />
+        <TourSwiper />
       </div>
       <ToursForm />
     </>
