@@ -6,10 +6,10 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import { Autoplay, Pagination, Navigation } from "swiper";
 import DayCard from "./DayCard";
-import type { RootState } from "../../../store";
+import type { RootState } from "../../store";
 
 
-function Days8Swiper(): JSX.Element {
+function DaysSwiper(): JSX.Element {
 
   const days = useSelector((state: RootState ) => state.day8Swiper.daysList.filter((day) => day.tourId === 1))
   console.log(days);
@@ -44,4 +44,4 @@ return (
  )
 }
 
-export default Days8Swiper;
+export default DaysSwiper;

@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type DaysState from './types/DayState';
-import * as apiDays  from './apiDay8Swiper';
+import * as apiDays  from './apiDays';
 
 const initialState: DaysState = {
   daysList: [],
@@ -11,7 +11,7 @@ const initialState: DaysState = {
 // const loadNotes = createAsyncThunk('notes/loadNotes', () => api.loadNotes());
 export const loadDays = createAsyncThunk(
   // название экшена (оно нужно для отладки)
-  'daysSwiper/loadDays',
+  'days/loadDays',
   async () => {
     const days = await apiDays.loadDays();
     // можем сделать что-то с результатом
@@ -33,7 +33,7 @@ export const loadDays = createAsyncThunk(
 // );
 
 const daysSlice = createSlice({
-  name: 'Day8Swiper',
+  name: 'days',
   initialState,
   reducers: {},
   // здесь мы прописываем, что произойдёт со стэйтом после исполнения асинхронной операции (из thunk)

@@ -1,8 +1,8 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import type City from './types/CityType'
+import type CityType from './types/CityType';
 
-function SwiperCityCard ({city}: {city: City}): JSX.Element {
+function CityCard ({city}: {city: CityType}): JSX.Element {
   return (
     <Card className="bg-dark text-white">
       <Card.Img src={city.image} alt="Card image" />
@@ -16,4 +16,4 @@ function SwiperCityCard ({city}: {city: City}): JSX.Element {
   );
 }
 
-export default SwiperCityCard;
+export default CityCard;
