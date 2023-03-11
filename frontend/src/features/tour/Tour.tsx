@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../store"
 import DaysSwiper from "../days/DaysSwiper"
@@ -9,7 +9,7 @@ import { loadTours } from "../tours/toursSlice";
 
 
 function Tour (): JSX.Element {
-
+  const navigate = useNavigate()
   const dispatch = useAppDispatch();
   const { id } = useParams()
   
@@ -23,8 +23,9 @@ const tours= useSelector((state: RootState) => state.tours.toursList)
 
 if (tours.length===0) {
   return <h1>Loading</h1>
-};
-
+} if  (Number(id) > tours.length || Number.isNaN(Number(id)) || Number(id) <= 0 ) {
+  navigate('/notfound')
+}
 
 const chosenTour = tours.filter((tour) => tour.id === Number(id))
 
