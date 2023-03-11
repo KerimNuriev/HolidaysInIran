@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Layout from './Layout';
 import Home from '../features/home/Home';
 import NotFound from '../features/notFound/NotFound';
-import Tour8 from '../features/tour8/Tour8';
+import Tour from '../features/tour/Tour';
 import Tour10 from '../features/tour10/Tour10';
 import Admin from '../features/admin/Admin';
 import MyTour from '../features/myTour/MyTour';
@@ -26,7 +26,9 @@ function App(): JSX.Element {
 
   useEffect(() => {
     dispatch(loadCities());
+    dispatch(loadTours())
   }, [dispatch]);
+
 
   useEffect(() => {
     dispatch(getAdmin());
@@ -40,11 +42,12 @@ function App(): JSX.Element {
     );
   }
 
+
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/tour8" element={<Tour8 />} />
+        <Route path="/tour/:id" element={<Tour />} />
         <Route path="/tour10" element={<Tour10 />} />
         <Route path="/mytour" element={<MyTour />} />
         <Route path="/faq" element={<Faq />} />

@@ -49,7 +49,7 @@ function Header(): JSX.Element {
                     title="Dropdown"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    <LinkContainer to="/tour8">
+                    <LinkContainer to="/tour/:id">
                       <NavDropdown.Item eventKey={3}>
                         8 days tour
                       </NavDropdown.Item>

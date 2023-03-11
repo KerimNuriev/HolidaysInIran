@@ -11,10 +11,12 @@ const store = configureStore({
     // ключ - название раздела (feature)
     // значение - сам редьюсер
     // у каждого раздела сайт свой собственный редьюсер
+
     admin: adminReducer,
-    citySwiper: citiesReducer,
-    day8Swiper: daysReducer,
-    tourSwiper: toursReducer,
+    cities: citiesReducer,
+    days: daysReducer,
+    tours: toursReducer,
+
   },
 });
 
