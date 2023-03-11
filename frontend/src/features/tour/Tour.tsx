@@ -29,10 +29,15 @@ if (tours.length===0) {
 
 const chosenTour = tours.filter((tour) => tour.id === Number(id))
 
-console.log(tours)
+
 
 const [oneTour] = chosenTour
-console.log(oneTour) 
+const x = [...oneTour.Days]
+
+console.log(oneTour);
+const sortedOneTour = {...oneTour, Days: [...x.sort((a,b) => a.number_day - b.number_day)]}
+
+console.log(sortedOneTour);
 
 
 return (
@@ -41,7 +46,7 @@ return (
    <h1>Tour  component</h1>
   </div>
   <div>
-   <DaysSwiper oneTour={oneTour}/>
+   <DaysSwiper oneTour={sortedOneTour}/>
    </div>
    </>
  )

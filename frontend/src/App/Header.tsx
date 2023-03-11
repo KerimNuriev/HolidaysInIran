@@ -11,9 +11,9 @@ import {
   NavItem,
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useSelector } from 'react-redux';
 import logo from '../logo.png';
 import './Header.scss';
-import { useSelector } from 'react-redux';
 import type { RootState } from '../store';
 
 function Header(): JSX.Element {

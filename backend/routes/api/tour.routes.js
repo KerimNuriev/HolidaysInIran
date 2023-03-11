@@ -5,19 +5,19 @@ const { Tour, Schedule, Day} = require('../../db/models');
 router.route('/').get(async (req, res) => {
   try {
     const tours = await Tour.findAll({
-      order: [['createdAt', 'DESC']],
-      include: [Schedule, Day],
-      //   {
-      //     model: Schedule,
-      //     order: [['startDay'], 'DESC'],
-      //   },
-      //   {
-      //     model: Day,
-      //     order: [['number_day'], 'DESC'],
-      //   },
-      // ],
+      order: [['id', 'ASC']],
+      include: [
+        {
+          model: Schedule,
+          order: [['startDay'], 'ASC'],
+        },
+        {
+          order: [['id'], 'DESC'],
+          model: Day,
+        },
+      ],
     });
-    console.log(tours)
+    console.log(tours[0].Days)
     res.json(tours);
   } catch (error) {
     res.json({ error: error.message });
