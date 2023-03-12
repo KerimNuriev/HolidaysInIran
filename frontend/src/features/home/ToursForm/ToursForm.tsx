@@ -50,9 +50,9 @@ const handleChangeConnection: React.ChangeEventHandler<HTMLSelectElement> = useC
         <div className="form-container">
           <h3>Оформите заявку на тур</h3>
           <form className="form" onSubmit={handleSubmitForm}>
-            <input type="name" value={name} onChange={handleChangeName} placeholder="Ваше имя" />
+            <input type="text" value={name} onChange={handleChangeName} placeholder="Ваше имя" />
             <input type="email" value={email} onChange={handleChangeEmail} placeholder="Ваша email" />
-            <input type="phone" value={phone} onChange={handleChangePhone} placeholder="Ваш телефон +7" />
+            <input type="text" maxLength={12} value={phone} onChange={handleChangePhone} placeholder="Ваш телефон +7" />
             <select style={{marginBottom: 10}} value={tour} onChange={handleChangeTour}>
             <option defaultValue="Выбирете желаемый тур">Выбирете желаемый тур</option>
             <option>8 дней 7 ночей</option>
