@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import {
   Button,
@@ -19,11 +19,17 @@ import { useAppDispatch } from '../store';
 import { logout } from '../features/admin/adminSlice';
 
 function Header(): JSX.Element {
+  const [lang, setLang] = useState('ru');
+
   const admin = useSelector((state: RootState) => state.admin.admin);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const tours = useSelector((state: RootState) => state.tours.toursList);
+
+  const handleLang = (): void => {
+    setLang((prev) => (prev === 'ru' ? 'en' : 'ru'));
+  };
 
   const handleLogout = React.useCallback(
     async (event: React.MouseEvent) => {
@@ -43,7 +49,7 @@ function Header(): JSX.Element {
         <Navbar key={expand} expand={expand} className="mb-3">
           <Container fluid>
             <LinkContainer to="/">
-              <Nav.Link eventKey={11}>
+              <Nav.Link>
                 <img src={logo} className="logo" alt="logo" />
               </Nav.Link>
             </LinkContainer>
@@ -59,7 +65,7 @@ function Header(): JSX.Element {
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <LinkContainer to="/">
-                    <Nav.Link eventKey={12}>Главная</Nav.Link>
+                    <Nav.Link>Главная</Nav.Link>
                   </LinkContainer>
                   <NavDropdown
                     title="Туры в Иран"
@@ -69,9 +75,7 @@ function Header(): JSX.Element {
                       tours.map((tour) => (
                         <>
                           <LinkContainer key={tour.id} to={`/tour/${tour.id}`}>
-                            <NavDropdown.Item eventKey={tour.id}>
-                              {tour.title}
-                            </NavDropdown.Item>
+                            <NavDropdown.Item>{tour.title}</NavDropdown.Item>
                           </LinkContainer>
                           <NavDropdown.Divider />
                         </>
@@ -80,9 +84,7 @@ function Header(): JSX.Element {
                       <></>
                     )}
                     <LinkContainer to="/mytour">
-                      <NavDropdown.Item eventKey={13}>
-                        Индивидуальные туры
-                      </NavDropdown.Item>
+                      <NavDropdown.Item>Индивидуальные туры</NavDropdown.Item>
                     </LinkContainer>
                   </NavDropdown>
                   <LinkContainer to="/faq">
@@ -92,7 +94,7 @@ function Header(): JSX.Element {
                     <Nav.Link>Контакты</Nav.Link>
                   </LinkContainer>
                   <LinkContainer to="/">
-                    <Nav.Link eventKey={14}>{admin?.userName}</Nav.Link>
+                    <Nav.Link>{admin?.userName}</Nav.Link>
                   </LinkContainer>
                   {admin && (
                     <button type="button" onClick={handleLogout}>
@@ -101,7 +103,9 @@ function Header(): JSX.Element {
                   )}
                   <LinkContainer to="/contact">
                     <Nav.Link>
-                      <span className="language">Ru</span>
+                      <button type="button" onClick={handleLang}>
+                        {lang}
+                      </button>
                     </Nav.Link>
                   </LinkContainer>
                 </Nav>
