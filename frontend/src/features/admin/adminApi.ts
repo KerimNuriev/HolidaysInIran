@@ -30,3 +30,9 @@ export async function login(credentials: Credentials): Promise<Admin> {
 
   return res.json();
 }
+
+export async function logout(): Promise<void> {
+  await fetch('/logout', {
+    method: 'POST',
+  });
+}

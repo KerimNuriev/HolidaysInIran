@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import {
   Button,
   Container,
@@ -15,13 +15,27 @@ import { useSelector } from 'react-redux';
 import logo from '../logo.png';
 import './Header.scss';
 import type { RootState } from '../store';
+import { useAppDispatch } from '../store';
+import { logout } from '../features/admin/adminSlice';
 
 function Header(): JSX.Element {
   const admin = useSelector((state: RootState) => state.admin.admin);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-  const tours = useSelector((state: RootState) => state.tours.toursList)
+  const tours = useSelector((state: RootState) => state.tours.toursList);
 
+  const handleLogout = React.useCallback(
+    async (event: React.MouseEvent) => {
+      event.preventDefault();
 
+      const dispatchResult = await dispatch(logout());
+      if (logout.fulfilled.match(dispatchResult)) {
+        navigate('/');
+      }
+    },
+    [dispatch, navigate],
+  );
 
   return (
     <div className="header">
@@ -40,9 +54,7 @@ function Header(): JSX.Element {
               placement="end"
             >
               <Offcanvas.Header closeButton>
-                <Offcanvas.Title
-                  id={`offcanvasNavbarLabel-expand-${expand}`}
-                />
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`} />
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
@@ -53,19 +65,20 @@ function Header(): JSX.Element {
                     title="Туры в Иран"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    {tours.length > 0 ? 
-                    tours.map((tour) => 
-                    <>
-                    <LinkContainer key={tour.id} to={`/tour/${tour.id}`}>
-                    <NavDropdown.Item eventKey={tour.id}>
-                      {tour.title}
-                    </NavDropdown.Item>
-                  </LinkContainer>
-                  <NavDropdown.Divider /> 
-                  </>)
-                  :
-                  <></>
-                  }                    
+                    {tours.length > 0 ? (
+                      tours.map((tour) => (
+                        <>
+                          <LinkContainer key={tour.id} to={`/tour/${tour.id}`}>
+                            <NavDropdown.Item eventKey={tour.id}>
+                              {tour.title}
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                          <NavDropdown.Divider />
+                        </>
+                      ))
+                    ) : (
+                      <></>
+                    )}
                     <LinkContainer to="/mytour">
                       <NavDropdown.Item eventKey={13}>
                         Индивидуальные туры
@@ -81,6 +94,11 @@ function Header(): JSX.Element {
                   <LinkContainer to="/">
                     <Nav.Link eventKey={14}>{admin?.userName}</Nav.Link>
                   </LinkContainer>
+                  {admin && (
+                    <button type="button" onClick={handleLogout}>
+                      Выйти
+                    </button>
+                  )}
                   <LinkContainer to="/contact">
                     <Nav.Link>
                       <span className="language">Ru</span>

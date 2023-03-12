@@ -4,7 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Moments from './Momets';
 
-function Layout(): JSX.Element {
+function LayoutUser(): JSX.Element {
   return (
     <div className="wrapper">
       <Header />
@@ -17,4 +17,4 @@ function Layout(): JSX.Element {
   );
 }
 
-export default Layout;
+export default LayoutUser;
