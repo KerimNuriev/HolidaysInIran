@@ -1,6 +1,6 @@
 import React from 'react';
 import CitySwiper from '../cities/CitySwiper';
-import ToursForm from './ToursForm/ToursForm';
+import ToursForm from '../toursForm/ToursForm';
 import TourSwiper from '../tours/TourSwiper';
 
 function Home(): JSX.Element {

@@ -1,24 +1,39 @@
 import React, { memo, useCallback, useState } from 'react';
-import './ToursForm.scss';
+import { useAppDispatch } from '../../store';
+import { applic } from './TourFormSlice';
+import './ToursForm.scss'
+import type FormApplicationType from './types/FormApplicationType';
 
 function ToursForm(): JSX.Element {
+  const dispatch = useAppDispatch();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [tour, setTour] = useState('')
   const [phone, setPhone] = useState('');
   const [date, setDate] = useState('');
   const [connection, setConnection] = useState('');
-
+  const [susses, setSusses] = useState(false);
+  const [erorr, setErorr] = useState(false);
+  
     // Все данные с инпутов и селектов приходят сюда по нажатию
-  const handleSubmitForm: React.FormEventHandler<HTMLFormElement> = (event) => {
+  const handleSubmitForm = useCallback(async (event: React.FormEvent<Element>) => {
     event.preventDefault();
-    console.log(name);
-    console.log(email);
-    console.log(phone);
-    console.log(date);
-    console.log(tour);
-    console.log(connection);
-}
+    const application = {name, email, phone, tour, date, connection}
+    const result = await dispatch(applic(application))
+    if (result.payload === 'susses') {
+      setSusses((prev)=> !prev)
+      setName('')
+      setEmail('')
+      setPhone('')
+      setDate('')
+      setConnection('')
+      setTour('')
+    } else {
+      setErorr((prev)=> !prev)
+    }
+    
+    }, [connection, date, dispatch, email, name, phone, tour])
 
   const handleChangeName: React.ChangeEventHandler<HTMLInputElement> = useCallback((event): void => {
     setName(event.target.value)
@@ -54,17 +69,27 @@ const handleChangeConnection: React.ChangeEventHandler<HTMLSelectElement> = useC
             <input type="email" value={email} onChange={handleChangeEmail} placeholder="Ваша email" />
             <input type="text" maxLength={12} value={phone} onChange={handleChangePhone} placeholder="Ваш телефон +7" />
             <select style={{marginBottom: 10}} value={tour} onChange={handleChangeTour}>
-            <option defaultValue="Выбирете желаемый тур">Выбирете желаемый тур</option>
+            <option disabled defaultValue="Выбирете желаемый тур">Выбирете желаемый тур</option>
             <option>8 дней 7 ночей</option>
             <option>10 дней 9 ночей</option>
             </select>
             <select value={connection} onChange={handleChangeConnection}>
-            <option defaultValue="Как с вами можно связаться">Как с вами можно связаться</option>
+            <option disabled defaultValue="Как с вами можно связаться">Как с вами можно связаться</option>
             <option>По почте</option>
             <option>По телефону</option>
             </select>
             <input type="text" value={date} onChange={handleChangeDate} placeholder="Желаемые даты" />
             <button type="submit">Отправить</button>
+            {susses && 
+            <div className="form">
+              <h3>Заявка успешно отправлена</h3>
+              <button type="button" onClick={() => setSusses((prev)=> !prev)}>Ok</button>
+            </div>}
+            {erorr && 
+            <div className="form">
+              <h3>Заполните все поля!</h3>
+              <button type="button" onClick={() => setErorr((prev)=> !prev)}>Ok</button>
+            </div>}
           </form>
         </div>
       </div>
