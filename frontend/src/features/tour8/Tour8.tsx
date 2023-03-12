@@ -24,4 +24,4 @@ return (
  )
 }
 
-export default Tour8;
+export default Tour8
