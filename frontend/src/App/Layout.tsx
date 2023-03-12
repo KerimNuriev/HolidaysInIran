@@ -4,16 +4,17 @@ import Header from './Header';
 import Footer from './Footer';
 import Moments from './Momets';
 
-function Layout(): JSX.Element {
+function LayoutUser(): JSX.Element {
   return (
-    <div className="App">
+    <div className="wrapper">
       <Header />
-      {/* Этот компонент показывает, что сюда нужно рендерить текущую страницу */}
-      <Outlet />
-      <Moments />
+      <div className="content">
+        <Outlet />
+        <Moments />
+      </div>
       <Footer />
     </div>
   );
 }
 
-export default Layout;
+export default LayoutUser;
