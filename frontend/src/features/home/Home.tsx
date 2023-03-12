@@ -8,7 +8,7 @@ function Home(): JSX.Element {
     <>
       <CitySwiper />
       <div className="container">
-        <h1>Ya est' home!</h1>
+        <h1 className="main-title">Туры в Иран</h1>
         <TourSwiper />
       </div>
       <ToursForm />

@@ -1,10 +1,13 @@
 .main-title {
   color: #eba18a;
   font-weight: 300;
+  font-size: 2em;
   position: relative;
   cursor: pointer;
   display: inline-block;
   padding-bottom: 10px;
+  margin-bottom: 1em;
+  text-transform: uppercase;
 }
 .main-title:after {
   content: '';
