@@ -91,13 +91,15 @@ function Header(): JSX.Element {
                   <LinkContainer to="/contact">
                     <Nav.Link>Контакты</Nav.Link>
                   </LinkContainer>
-                  <LinkContainer to="/">
-                    <Nav.Link eventKey={14}>{admin?.userName}</Nav.Link>
-                  </LinkContainer>
                   {admin && (
-                    <button type="button" onClick={handleLogout}>
-                      Выйти
-                    </button>
+                    <>
+                      <LinkContainer to="/account">
+                        <Nav.Link eventKey={14}>{admin?.userName}</Nav.Link>
+                      </LinkContainer>
+                      <LinkContainer to="/">
+                        <Nav.Link onClick={handleLogout}>Выйти</Nav.Link>
+                      </LinkContainer>
+                    </>
                   )}
                   <LinkContainer to="/contact">
                     <Nav.Link>

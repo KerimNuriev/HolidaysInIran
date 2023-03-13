@@ -5,7 +5,7 @@ import type CityType from './types/CityType';
 function CityCard({ city }: { city: CityType }): JSX.Element {
   return (
     <Card className="bg-dark text-white">
-      <Card.Img src={city.image} alt="Card image" />
+      <Card.Img src={city.image} alt={city.cityName} />
       <Card.ImgOverlay>
         <div className="city-background">
           <Card.Title>{city.cityName}</Card.Title>

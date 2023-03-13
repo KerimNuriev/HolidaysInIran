@@ -1,0 +1,46 @@
+.city-card {
+  width: 23.5%;
+  margin-bottom: 1.5em;
+  margin-right: 1.5em;
+}
+.city-card:nth-child(4n) {
+  margin-right: 0;
+}
+.card-img {
+  border-radius: 0 !important;
+}
+.card-title {
+  width: 100%;
+}
+label span {
+  font-size: 0.8em;
+}
+@media screen and (max-width: 1024px) {
+  .city-card {
+    width: 31%;
+  }
+  .city-card:nth-child(3n) {
+    margin-right: 0;
+  }
+  .city-card:nth-child(4n) {
+    margin-right: 1.5em;
+  }
+  .btn-change,
+  .btn-del {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .city-card {
+    width: 47%;
+  }
+  .city-card:nth-child(2n) {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .city-card {
+    width: 100%;
+    margin-right: 0;
+  }
+}

@@ -1,11 +1,7 @@
-import React from "react"
+import React from 'react';
 
-
-function Faq (): JSX.Element {
-
-return (
-         <div><h1>Faq component</h1>  </div>
- )
+function Faq(): JSX.Element {
+  return <div>Faq</div>;
 }
 
-export default Faq
+export default Faq;

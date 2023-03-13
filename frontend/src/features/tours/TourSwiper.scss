@@ -21,33 +21,3 @@
 .swiper-button-prev {
   color: #c78672;
 }
-.card-img-overlay {
-  top: 60% !important;
-  left: 11% !important;
-}
-.city-background {
-  background: rgba(22, 17, 23, 0.8);
-  border: 1px solid #4c4542;
-  flex-direction: column;
-  display: inline-flex;
-  padding: 2em;
-}
-.city-link {
-  text-decoration: none;
-}
-.card-title {
-  padding-bottom: 10px;
-  display: inline-block;
-  text-transform: uppercase;
-  border-bottom: 2px solid #eba18a;
-  color: #eba18a;
-  font-size: 2em;
-}
-.card-text:last-child {
-  margin-bottom: 0;
-  margin: 0 !important;
-  padding-top: 10px;
-  display: inline-block;
-  font-size: 1.2em;
-  color: #fff;
-}

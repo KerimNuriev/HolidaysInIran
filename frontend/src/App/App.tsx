@@ -17,12 +17,14 @@ import { loadCities } from '../features/cities/citiesSlice';
 import { loadTours } from '../features/tours/toursSlice';
 import { getAdmin } from '../features/admin/adminSlice';
 import Contact from '../features/contact/Contact';
+import Account from '../features/account/Account';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const authChecked = useSelector(
     (state: RootState) => state.admin.authChecked,
   );
+  const admin = useSelector((state: RootState) => state.admin.admin);
 
   useEffect(() => {
     dispatch(loadCities());
@@ -31,7 +33,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     dispatch(getAdmin());
-  }, [dispatch, authChecked]);
+  }, [dispatch, authChecked, admin]);
 
   if (!authChecked) {
     return (
@@ -51,6 +53,7 @@ function App(): JSX.Element {
         <Route path="/mytour" element={<MyTour />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/admin" element={<Admin />} />
+        {admin && <Route path="/account" element={<Account />} />}
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
