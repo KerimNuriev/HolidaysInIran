@@ -5,7 +5,7 @@ function NotFound(): JSX.Element {
   return (
     <div className="error-container">
       <img
-        src="https://skazki-na-noch.ru/wp-content/themes/skazki/voini/error.png"
+        src="/image/error.png"
         alt="error"
         className="error-img"
       />

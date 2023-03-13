@@ -5,7 +5,8 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await City.bulkCreate([
       {
-        cityName: 'Kashahn/Yazd',
+        cityNameRu: 'Кашан/Йезд',
+        cityNameEn: 'Kashahn/Yazd',
         image: '/image/kashan.png',
         descriptionRu:
           'Одна из 21 области Иранской провинции Исфахан. Административный центр — город Kashahn.',
@@ -13,7 +14,8 @@ module.exports = {
           'One of the 21 provinces of the Iranian province of Isfahan. The administrative center is the city of Kashahn.',
       },
       {
-        cityName: 'Yazd/Maybod',
+        cityNameRu: 'Йезд/Мейбод',
+        cityNameEn: 'Yazd/Maybod',
         image: '/image/maybod.png',
         descriptionRu:
           'Город в центральном районе округа Maybod, провинция Yazd.',
@@ -21,7 +23,8 @@ module.exports = {
           'A city in the central district of Maybod district, Yazd province.',
       },
       {
-        cityName: 'Yazd/Taft',
+        cityNameRu: 'Йезд/Тефт',
+        cityNameEn: 'Yazd/Taft',
         image: '/image/taft.png',
         descriptionRu:
           'Город в центральном районе округа Taft, провинция Yazd.',
@@ -29,14 +32,16 @@ module.exports = {
           'City in the Central District of Taft County, Yazd Province.',
       },
       {
-        cityName: 'Shiraz',
+        cityNameRu: 'Шираз',
+        cityNameEn: 'Shiraz',
         image: '/image/shiraz.png',
         descriptionRu:
           'Город на юге Ирана, административный центр провинции Фарс',
         descriptionEn: 'A city in southern Iran, the capital of Fars Province',
       },
       {
-        cityName: 'Isfahan',
+        cityNameRu: 'Эсфахан',
+        cityNameEn: 'Isfahan',
         image: '/image/isfahan.png',
         descriptionRu:
           'Является крупным городом в Центральном районе провинции Исфахан в Иране',
@@ -44,7 +49,8 @@ module.exports = {
           'Is a major city in the Central District of Isfahan Province in Iran',
       },
       {
-        cityName: 'Tehran',
+        cityNameRu: 'Тегеран',
+        cityNameEn: 'Tehran',
         image: '/image/tehran.png',
         descriptionRu:
           'Столица и крупнейший город Ирана и крупнейший город в провинции Тегеран',

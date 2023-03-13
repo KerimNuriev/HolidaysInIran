@@ -8,10 +8,12 @@ function CityCard({ city }: { city: CityType }): JSX.Element {
 
   return (
     <Card className="bg-dark text-white">
-      <Card.Img src={city.image} alt={city.cityName} />
+      <Card.Img src={city.image} alt={city.cityNameEn} />
       <Card.ImgOverlay>
         <div className="city-background">
-          <Card.Title>{city.cityName}</Card.Title>
+          <Card.Title>
+            {i18n.language === 'en' ? city.cityNameEn : city.cityNameRu}
+          </Card.Title>
           <Card.Text>
             {i18n.language === 'en' ? city.descriptionEn : city.descriptionRu}
           </Card.Text>

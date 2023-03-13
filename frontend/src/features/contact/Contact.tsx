@@ -7,10 +7,7 @@ function Contact(): JSX.Element {
       <h1 className="main-title">Контакты</h1>
       <div className="contact-container">
         <div className="contact-left">
-          <img
-            src="https://skazki-na-noch.ru/wp-content/themes/skazki/voini/contact.png"
-            alt="contact"
-          />
+          <img src="/image/contact.png" alt="contact" />
         </div>
         <div className="contact-right">
           <div className="form-block">

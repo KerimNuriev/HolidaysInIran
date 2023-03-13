@@ -15,23 +15,16 @@ router
   })
   .post(async (req, res) => {
     try {
-      const { cityName, image, description } = req.body;
-
-      if (cityName && image && description && req.session.adminId) {
-        const newCity = await City.create({
-          cityName,
-          image,
-          description,
-        });
-        const { admin } = res.locals;
-        if (newCity) {
-          res.status(201).json(newCity);
-        } else {
-          res.status(404).json({ error: 'такой город уже существует' });
-        }
-      } else {
-        res.status(404).json({ error: 'ты кого хочешь обмануть)))))' });
-      }
+      const { cityNameRu, cityNameEn, image, descriptionRu, descriptionEn } =
+        req.body;
+      const newCity = await City.create({
+        cityNameRu,
+        cityNameEn,
+        image,
+        descriptionRu,
+        descriptionEn,
+      });
+      res.json(newCity);
     } catch (error) {
       res.json({ error: error.message });
     }

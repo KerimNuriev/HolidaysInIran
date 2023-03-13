@@ -2,14 +2,21 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../../store';
+import { useAppDispatch } from '../../../store';
 import CitiesCard from './CitiesCard';
+import * as api from '../../cities/apiCity';
 import './CitiesAdd.scss';
+import { addCities, deleteCity } from '../../cities/citiesSlice';
+import type { CityId } from '../../cities/types/CityType';
 
 function CityAdd(): JSX.Element {
   const [modal, setModal] = useState(false);
   const [image, setImage] = useState('');
-  const [cityName, setCityName] = useState('');
-  const [description, setDescription] = useState('');
+  const [cityNameRu, setCityNameRu] = useState('');
+  const [cityNameEn, setCityNameEn] = useState('');
+  const [descriptionRu, setDescriptionRu] = useState('');
+  const [descriptionEn, setDescriptionEn] = useState('');
+  const dispatch = useAppDispatch();
 
   const handleOpenModal = (): void => {
     setModal((prev) => !prev);
@@ -17,19 +24,54 @@ function CityAdd(): JSX.Element {
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setImage(e.target.value);
   };
-  const handleChangeCityName: React.ChangeEventHandler<HTMLInputElement> = (
+  const handleChangeCityNameRu: React.ChangeEventHandler<HTMLInputElement> = (
     e,
   ) => {
-    setCityName(e.target.value);
+    setCityNameRu(e.target.value);
   };
-  const handleChangeDescription: React.ChangeEventHandler<
+  const handleChangeCityNameEn: React.ChangeEventHandler<HTMLInputElement> = (
+    e,
+  ) => {
+    setCityNameEn(e.target.value);
+  };
+  const handleChangeDescriptionRu: React.ChangeEventHandler<
     HTMLTextAreaElement
   > = (e) => {
-    setDescription(e.target.value);
+    setDescriptionRu(e.target.value);
+  };
+  const handleChangeDescriptionEn: React.ChangeEventHandler<
+    HTMLTextAreaElement
+  > = (e) => {
+    setDescriptionEn(e.target.value);
   };
 
   const citiesList = useSelector((state: RootState) => state.cities.citiesList);
 
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e): void => {
+    e.preventDefault();
+    const city = {
+      id: 1,
+      cityNameRu,
+      cityNameEn,
+      image,
+      descriptionRu,
+      descriptionEn,
+    };
+    dispatch(addCities(city));
+    setModal((prev) => !prev);
+    setImage('');
+    setCityNameRu('');
+    setCityNameEn('');
+    setDescriptionRu('');
+    setDescriptionEn('');
+  };
+
+  const handleCityRemove = React.useCallback(
+    (id: CityId) => {
+      dispatch(deleteCity(id));
+    },
+    [dispatch],
+  );
   return (
     <>
       <button type="button" onClick={handleOpenModal}>
@@ -38,7 +80,7 @@ function CityAdd(): JSX.Element {
       {modal && (
         <div className="add-container">
           <h3>Добавить город</h3>
-          <form>
+          <form onSubmit={handleSubmit}>
             <label htmlFor="image">
               Загрузить картинку <span>* разрешение 1920 x 760 пикселей</span>
             </label>
@@ -49,31 +91,45 @@ function CityAdd(): JSX.Element {
               value={image}
               onChange={handleChange}
             />
-            <label htmlFor="cityName">Название города</label>
+            <label htmlFor="cityNameRu">Название города</label>
             <input
-              id="cityName"
+              id="cityNameRu"
               type="text"
-              name="cityName"
-              value={cityName}
-              onChange={handleChangeCityName}
+              name="cityNameRu"
+              value={cityNameRu}
+              onChange={handleChangeCityNameRu}
+            />
+            <label htmlFor="cityNameEn">Название города на английском</label>
+            <input
+              id="cityNameEn"
+              type="text"
+              name="cityNameEn"
+              value={cityNameEn}
+              onChange={handleChangeCityNameEn}
             />
             <label htmlFor="description">Описание города</label>
             <textarea
               id="description"
               name="description"
               rows={4}
-              value={description}
-              onChange={handleChangeDescription}
+              value={descriptionRu}
+              onChange={handleChangeDescriptionRu}
             />
-            <button type="button" onClick={handleOpenModal}>
-              Добавить
-            </button>
+            <label htmlFor="descriptionEn">Описание города на английском</label>
+            <textarea
+              id="descriptionEn"
+              name="descriptionEn"
+              rows={4}
+              value={descriptionEn}
+              onChange={handleChangeDescriptionEn}
+            />
+            <button type="submit">Добавить</button>
           </form>
         </div>
       )}
       <div className="tours-block">
         {citiesList?.map((city) => (
-          <CitiesCard key={city.id} city={city} />
+          <CitiesCard key={city.id} city={city} onRemove={handleCityRemove} />
         ))}
       </div>
     </>
