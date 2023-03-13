@@ -47,28 +47,31 @@ function FormAuth(): JSX.Element {
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>userName</Form.Label>
-        <input type="text" value={userName} onChange={handleNameChange} />
-        <Form.Text className="text-muted">
-          We'll never share your userName with anyone else.
-        </Form.Text>
-      </Form.Group>
+    <div className="container">
+      <div className="auth-container">
+        <div className="form-container">
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Ваше имя</Form.Label>
+              <input type="text" value={userName} onChange={handleNameChange} />
+            </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <input
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Пароль</Form.Label>
+              <input
+                type="password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+            </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+            <Button className="auth-button" variant="primary" type="submit">
+              Войти
+            </Button>
+          </Form>
+        </div>
+      </div>
+    </div>
   );
 }
 
