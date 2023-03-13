@@ -1,8 +1,8 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 import type TourType from './types/TourType';
 import './TourCard.scss';
-import { Link } from 'react-router-dom';
 
 function SwiperTourCard({ tour }: { tour: TourType }): JSX.Element {
   return (
@@ -14,15 +14,7 @@ function SwiperTourCard({ tour }: { tour: TourType }): JSX.Element {
           </div>
           <figcaption>
             <h3>{tour.title}</h3>
-            <p>${tour.price_2}</p>
-            {/* <p>{tour.shortDescription}</p> */}
-            {/* {tour.Schedules?.map((schedule) => (
-              <div key={schedule.id}>
-                Начало тура {schedule.startDay.toString().slice(0, 10)} -
-                окончание {schedule.endDay.toString().slice(0, 10)}. Статус:{' '}
-                {schedule.hasFree}
-              </div>
-            ))} */}
+            <p>От ${tour.price_1}</p>
           </figcaption>
         </figure>
       </Card>

@@ -2,7 +2,7 @@ import type ScheduleType from './ScheduleType';
 import type DayType from '../../days/types/DayType';
 
 type TourType = {
-  id: number;
+  id: number | string;
   title: string;
   price_1: number;
   price_2: number;
