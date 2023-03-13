@@ -7,7 +7,7 @@ const logoRegoRouter = require('./routes/render/logoRego.routes');
 const cityRouter = require('./routes/api/city.routes');
 const dayRouter = require('./routes/api/day.routes');
 const tourRouter = require('./routes/api/tour.routes');
-const telegramBotRouter = require('./routes/render/telegramBot.routes');
+const telegramBotRouter = require('./routes/api/telegramBot.routes');
 
 const app = express();
 

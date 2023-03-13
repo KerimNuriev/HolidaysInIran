@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import tourApplication from './apiTourForm';
+import * as api from './apiTourForm';
 import type FormApplicationType from './types/FormApplicationType';
 
 const initialState: FormApplicationType = {
+    loading: false,
     name: '', 
     email: '',
     phone: '',
@@ -11,10 +12,12 @@ const initialState: FormApplicationType = {
     connection: '',
 }
 
-export const applic = createAsyncThunk(
-    'toursForm/addApplication',
-    async (application: FormApplicationType) => tourApplication({application})
-    );
+export const loadApplication = createAsyncThunk(
+    'toursForm/loadApplication',
+    async ({application}: {application: FormApplicationType}) => {
+    await api.tourApplication({application})
+    return application;
+});
 
 const tourFormSlice = createSlice({
     name: 'toursForm',
@@ -22,7 +25,12 @@ const tourFormSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-        .addCase(applic.fulfilled, (state, action) => {
+        .addCase(loadApplication.pending, (state, action) => {
+            state.loading = true;
+            state.loadError = undefined;
+           })
+        .addCase(loadApplication.fulfilled, (state, action) => {
+         state.loading = false;
          state.name = action.payload.name;
          state.email = action.payload.email;
          state.phone = action.payload.phone;
@@ -30,6 +38,9 @@ const tourFormSlice = createSlice({
          state.tour = action.payload.tour;
          state.connection = action.payload.connection;
         })
+        .addCase(loadApplication.rejected, (state, action) => {
+           state.loadError = action.error.message;
+           })
     },
 });
 

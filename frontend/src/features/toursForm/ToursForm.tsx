@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useState } from 'react';
 import { useAppDispatch } from '../../store';
-import { applic } from './TourFormSlice';
+import { loadApplication } from './TourFormSlice';
 import './ToursForm.scss'
 import type FormApplicationType from './types/FormApplicationType';
 
@@ -18,7 +18,7 @@ function ToursForm(): JSX.Element {
   const handleSubmitForm = useCallback(async (event: React.FormEvent<Element>) => {
     event.preventDefault();
     const application = {name, email, phone, tour, date, connection}
-    const result = await dispatch(applic(application))
+    const result = await dispatch(loadApplication(application))
     
     }, [connection, date, dispatch, email, name, phone, tour])
 
