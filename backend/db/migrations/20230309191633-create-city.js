@@ -8,7 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      cityName: {
+      cityNameRu: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+      },
+      cityNameEn: {
         allowNull: false,
         type: Sequelize.TEXT,
       },

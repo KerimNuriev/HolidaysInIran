@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import assert from 'assert';
 import type CityState from './types/CityState';
 import * as apiCity from './apiCity';
+import type CityType from './types/CityType';
+import type { CityId } from './types/CityType';
 
 const initialState: CityState = {
   citiesList: [],
@@ -19,6 +21,22 @@ export const loadCities = createAsyncThunk(
 
     // результат этой функции попадёт в payload в extraReducer
     return cities;
+  },
+);
+
+export const addCities = createAsyncThunk(
+  'cities/addCities',
+  async (city: CityType) => {
+    const cities = await apiCity.addCities(city);
+    return cities;
+  },
+);
+
+export const deleteCity = createAsyncThunk(
+  'tasks/deleteCity',
+  async (id: CityId) => {
+    await apiCity.deleteCity(id);
+    return id;
   },
 );
 
@@ -40,15 +58,25 @@ const citiesSlice = createSlice({
   // здесь мы прописываем, что произойдёт со стэйтом после исполнения асинхронной операции (из thunk)
   extraReducers: (builder) => {
     // если loadNotes завершилось успешно (fulfilled)
-    builder.addCase(loadCities.fulfilled, (state, action) => {
-      // то мы делаем вот это со стэйтом
-      state.citiesList = action.payload;
-      state.myTourCities.length = 5;
-      const city = state.citiesList.find((el) => el.cityName === 'Tehran');
-      assert(city);
-      state.myTourCities.unshift(city);
-      state.myTourCities.push(city);
-    });
+    builder
+      .addCase(loadCities.fulfilled, (state, action) => {
+        // то мы делаем вот это со стэйтом
+        state.citiesList = action.payload;
+        state.myTourCities.length = 5;
+        const city = state.citiesList.find((el) => el.cityNameEn === 'Tehran');
+        assert(city);
+        state.myTourCities.unshift(city);
+        state.myTourCities.push(city);
+      })
+      .addCase(addCities.fulfilled, (state, action) => {
+        state.citiesList = [action.payload, ...state.citiesList];
+      })
+      .addCase(deleteCity.fulfilled, (state, action) => {
+        state.citiesList = state.citiesList.filter(
+          (city) => city.id !== action.payload,
+        );
+      });
+
     //   .addCase(updateNote.fulfilled, (state, action) => {
     //     // ! - означает гарантию, что такой объект - есть, это - нерекомендуемая практика
     //     // так как снижает защиту типизации

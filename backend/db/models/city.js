@@ -6,7 +6,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   City.init(
     {
-      cityName: {
+      cityNameRu: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
+      cityNameEn: {
         allowNull: false,
         type: DataTypes.TEXT,
       },
