@@ -1,15 +1,20 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import { useTranslation } from 'react-i18next';
 import type CityType from './types/CityType';
 
 function CityCard({ city }: { city: CityType }): JSX.Element {
+  const { i18n } = useTranslation();
+
   return (
     <Card className="bg-dark text-white">
       <Card.Img src={city.image} alt="Card image" />
       <Card.ImgOverlay>
         <div className="city-background">
           <Card.Title>{city.cityName}</Card.Title>
-          <Card.Text>{city.description}</Card.Text>
+          <Card.Text>
+            {i18n.language === 'en' ? city.descriptionEn : city.descriptionRu}
+          </Card.Text>
         </div>
       </Card.ImgOverlay>
     </Card>
