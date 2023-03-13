@@ -1,11 +1,23 @@
-import React from "react"
+import React from 'react';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../store';
+import { useAppDispatch } from '../../store';
+import type TourType from '../tours/types/TourType';
 
+function MyTour(): JSX.Element {
+  const dispatch = useAppDispatch();
 
-function MyTour (): JSX.Element {
+  const citiesList = useSelector((state: RootState) => state.cities.citiesList);
 
-return (
-         <div><h1>MyTour component</h1>  </div>
- )
+  return (
+    <>
+      <div>Тегеран</div>
+      <div>
+        <button type="button">+</button>
+      </div>
+      <div>Тегеран</div>
+    </>
+  );
 }
 
-export default MyTour
+export default MyTour;

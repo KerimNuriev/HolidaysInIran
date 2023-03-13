@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../store';
+import type { RootState } from '../../store';
+import { useAppDispatch } from '../../store';
 import DaysSwiper from '../days/DaysSwiper';
 import { loadCities } from '../cities/citiesSlice';
 import { loadTours } from '../tours/toursSlice';
+import type TourType from '../tours/types/TourType';
+
 
 function Tour(): JSX.Element {
   const navigate = useNavigate();
@@ -15,9 +18,12 @@ function Tour(): JSX.Element {
     dispatch(loadTours());
   }, [dispatch]);
 
-  const tours = useSelector((state: RootState) => state.tours.toursList);
 
-  if (tours.length === 0) {
+  const tours: TourType[] = useSelector(
+    (state: RootState) => state.tours.toursList,
+  );
+
+if (tours.length === 0) {
     return <h1>Loading</h1>;
   }
   if (

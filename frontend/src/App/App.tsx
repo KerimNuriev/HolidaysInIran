@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import LayoutUser from './Layout';
+import Layout from './Layout';
 import Home from '../features/home/Home';
 import NotFound from '../features/notFound/NotFound';
 import Tour from '../features/tour/Tour';
@@ -21,6 +21,7 @@ import Account from '../features/account/Account';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
+  const admin = useSelector((state: RootState) => state.admin.admin);
   const authChecked = useSelector(
     (state: RootState) => state.admin.authChecked,
   );
@@ -45,7 +46,7 @@ function App(): JSX.Element {
 
   return (
     <Routes>
-      <Route element={<LayoutUser />}>
+      <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/tour/:id" element={<Tour />} />
