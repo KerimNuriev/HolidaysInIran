@@ -1,13 +1,17 @@
 import React, { useState, useCallback } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import type { RootState } from '../../store';
 import { useAppDispatch } from '../../store';
 import { login } from './adminSlice';
 
 function FormAuth(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const error = useSelector((state: RootState) => state.admin.loginFormError);
+
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
@@ -52,6 +56,7 @@ function FormAuth(): JSX.Element {
     <div className="container">
       <div className="auth-container">
         <div className="form-container">
+          {error && <div style={{ display: 'block' }}>{error}</div>}
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Ваше имя</Form.Label>

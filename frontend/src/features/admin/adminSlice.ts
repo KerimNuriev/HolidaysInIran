@@ -7,6 +7,7 @@ import * as api from './adminApi';
 const initialState: AuthState = {
   authChecked: false,
   admin: undefined,
+  loginFormError: undefined,
 };
 
 export const getAdmin = createAsyncThunk('admin/auth', () => api.admin());
@@ -45,13 +46,9 @@ const adminSlice = createSlice({
   name: 'admin',
   initialState,
   reducers: {
-    // // 332 редьюсер для очистки ошибки
-    // resetLoginFormError: (state) => {
-    //   state.loginFormError = undefined;
-    // },
-    // resetRegisterFormError: (state) => {
-    //   state.registerFormError = undefined;
-    // },
+    resetLoginFormError: (state) => {
+      state.loginFormError = undefined;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -64,11 +61,14 @@ const adminSlice = createSlice({
 
       .addCase(login.fulfilled, (state, action) => {
         state.admin = action.payload;
-        // state.loginFormError = undefined;
+        state.loginFormError = undefined;
       })
 
       .addCase(logout.fulfilled, (state) => {
         state.admin = undefined;
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.loginFormError = action.error.message;
       });
     // 332 так изменяется стэйт если вернулась ошибка
     // .addCase(login.rejected, (state, action) => {

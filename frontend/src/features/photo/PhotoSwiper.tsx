@@ -18,6 +18,7 @@ function PhotoSwiper(): JSX.Element {
         spaceBetween={0}
         rewind
         centeredSlides={false}
+        loop
         autoplay={{
           delay: 9000,
           disableOnInteraction: false,
@@ -53,7 +54,9 @@ function PhotoSwiper(): JSX.Element {
         className="tour-swiper"
       >
         {photoList.map((elem) => (
-          <PhotoCard key={elem.id} elem={elem} />
+          <SwiperSlide key={elem.id}>
+            <PhotoCard elem={elem} />
+          </SwiperSlide>
         ))}
       </Swiper>
     </div>
