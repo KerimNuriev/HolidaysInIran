@@ -111,11 +111,13 @@ function Header(): JSX.Element {
                     </>
                   )}
 
-                  <Nav.Link>
-                    <button type="button" onClick={handleLang}>
-                      {lang}
-                    </button>
-                  </Nav.Link>
+                  <button
+                    type="button"
+                    className="language"
+                    onClick={handleLang}
+                  >
+                    {lang}
+                  </button>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
