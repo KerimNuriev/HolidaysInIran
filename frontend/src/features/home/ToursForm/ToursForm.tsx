@@ -1,7 +1,10 @@
 import React, { memo, useCallback, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import type { RootState } from '../../../store';
 import './ToursForm.scss';
 
-function ToursForm(): JSX.Element {
+function ToursForm({defaultSchedule}: {defaultSchedule: string | undefined}): JSX.Element {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [tour, setTour] = useState('')
@@ -44,6 +47,12 @@ const handleChangeConnection: React.ChangeEventHandler<HTMLSelectElement> = useC
     setConnection(event.target.value)
 }, [])
 
+
+// для условного рендеринга доступных туров и автозаполнения дат
+const tours = useSelector((state: RootState) => state.tours.toursList)
+const { id } = useParams()
+const [oneTour] = tours.filter((el) => el.id === Number(id))
+
   return (
     <div className="application">
       <div className="form-overlay">
@@ -54,16 +63,25 @@ const handleChangeConnection: React.ChangeEventHandler<HTMLSelectElement> = useC
             <input type="email" value={email} onChange={handleChangeEmail} placeholder="Ваша email" />
             <input type="text" maxLength={12} value={phone} onChange={handleChangePhone} placeholder="Ваш телефон +7" />
             <select style={{marginBottom: 10}} value={tour} onChange={handleChangeTour}>
-            <option defaultValue="Выбирете желаемый тур">Выбирете желаемый тур</option>
-            <option>8 дней 7 ночей</option>
-            <option>10 дней 9 ночей</option>
+            {id ?
+             (<option defaultValue={oneTour.title}>{oneTour.title}</option>)
+             : <>
+            (<option defaultValue="Выберите желаемый тур">Выберите желаемый тур</option>
+            {tours?.map((el) => <option key={el.id}> {el.title} </option>)})
+            </>
+             }
             </select>
             <select value={connection} onChange={handleChangeConnection}>
             <option defaultValue="Как с вами можно связаться">Как с вами можно связаться</option>
             <option>По почте</option>
             <option>По телефону</option>
             </select>
+            {defaultSchedule? 
+            <input type="text" defaultValue={defaultSchedule}  onChange={handleChangeDate} />
+             : 
             <input type="text" value={date} onChange={handleChangeDate} placeholder="Желаемые даты" />
+             }
+            
             <button type="submit">Отправить</button>
           </form>
         </div>

@@ -12,7 +12,7 @@ function Home(): JSX.Element {
         <h1 className="main-title">Туры в Иран</h1>
         <TourSwiper />
       </div>
-      <ToursForm />
+      <ToursForm defaultSchedule={undefined} />
       <div className="container">
         <h2 className="main-title">Путешествия по Ирану</h2>
         <PhotoSwiper />
