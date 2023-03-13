@@ -76,7 +76,7 @@ function Header(): JSX.Element {
                   >
                     {tours.length > 0 ? (
                       tours.map((tour) => (
-                        <React.Fragment key={tour.id} >
+                        <React.Fragment key={tour.id}>
                           <LinkContainer to={`/tour/${tour.id}`}>
                             <NavDropdown.Item eventKey={tour.id}>
                               {tour.title}

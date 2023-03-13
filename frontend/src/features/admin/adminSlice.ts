@@ -91,5 +91,6 @@ const adminSlice = createSlice({
 
 // export const { resetLoginFormError, resetRegisterFormError } =
 //   authSlice.actions;
+export const { resetLoginFormError } = adminSlice.actions;
 
 export default adminSlice.reducer;
