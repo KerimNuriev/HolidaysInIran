@@ -7,37 +7,49 @@ module.exports = {
       {
         cityName: 'Kashahn/Yazd',
         image: '/image/kashan.png',
-        description:
+        descriptionRu:
           'Одна из 21 области Иранской провинции Исфахан. Административный центр — город Kashahn.',
+        descriptionEn:
+          'One of the 21 provinces of the Iranian province of Isfahan. The administrative center is the city of Kashahn.',
       },
       {
         cityName: 'Yazd/Maybod',
         image: '/image/maybod.png',
-        description:
+        descriptionRu:
           'Город в центральном районе округа Maybod, провинция Yazd.',
+        descriptionEn:
+          'A city in the central district of Maybod district, Yazd province.',
       },
       {
         cityName: 'Yazd/Taft',
         image: '/image/taft.png',
-        description: 'Город в центральном районе округа Taft, провинция Yazd.',
+        descriptionRu:
+          'Город в центральном районе округа Taft, провинция Yazd.',
+        descriptionEn:
+          'City in the Central District of Taft County, Yazd Province.',
       },
       {
         cityName: 'Shiraz',
         image: '/image/shiraz.png',
-        description:
+        descriptionRu:
           'Город на юге Ирана, административный центр провинции Фарс',
+        descriptionEn: 'A city in southern Iran, the capital of Fars Province',
       },
       {
         cityName: 'Isfahan',
         image: '/image/isfahan.png',
-        description:
+        descriptionRu:
           'Является крупным городом в Центральном районе провинции Исфахан в Иране',
+        descriptionEn:
+          'Is a major city in the Central District of Isfahan Province in Iran',
       },
       {
         cityName: 'Tehran',
         image: '/image/tehran.png',
-        description:
+        descriptionRu:
           'Столица и крупнейший город Ирана и крупнейший город в провинции Тегеран',
+        descriptionEn:
+          'The capital and largest city of Iran and the largest city in the province of Tehran',
       },
     ]);
   },

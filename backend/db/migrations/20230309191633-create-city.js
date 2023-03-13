@@ -16,7 +16,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      description: {
+      descriptionRu: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+      },
+      descriptionEn: {
         allowNull: false,
         type: Sequelize.TEXT,
       },

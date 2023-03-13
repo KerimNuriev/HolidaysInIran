@@ -1,6 +1,7 @@
 import React from 'react';
 import i18n from 'i18next';
 import { useTranslation, initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
@@ -9,6 +10,7 @@ import App from './App/App';
 import store from './store';
 
 i18n
+  .use(LanguageDetector)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     // the translations
@@ -18,10 +20,25 @@ i18n
       en: {
         translation: {
           'Welcome to React': 'Welcome to React and react-i18next',
+          Главная: 'Main',
+          'Туры в Иран': 'Tours to Iran',
+          'Индивидуальные туры': 'individual tours',
+          'Информация для туристов': 'tourist information',
+          Контакты: 'Contacts',
+        },
+      },
+      ru: {
+        translation: {
+          'Welcome to React': 'Welcome to React and react-i18next',
+          Главная: 'Главная',
+          'Туры в Иран': 'Туры в Иран',
+          'Индивидуальные туры': 'Индивидуальные туры',
+          'Информация для туристов': 'Информация для туристов',
+          Контакты: 'Контакты',
         },
       },
     },
-    lng: 'en', // if you're using a language detector, do not define the lng option
+
     fallbackLng: 'en',
 
     interpolation: {
@@ -33,11 +50,9 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
-  // <React.StrictMode>
   <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
   </Provider>,
-  // </React.StrictMode>,
 );

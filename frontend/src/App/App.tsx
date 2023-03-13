@@ -20,6 +20,7 @@ import Contact from '../features/contact/Contact';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
+  const admin = useSelector((state: RootState) => state.admin.admin);
   const authChecked = useSelector(
     (state: RootState) => state.admin.authChecked,
   );
@@ -31,7 +32,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     dispatch(getAdmin());
-  }, [dispatch, authChecked]);
+  }, [dispatch, authChecked, admin]);
 
   if (!authChecked) {
     return (
