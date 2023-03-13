@@ -8,6 +8,7 @@ import { loadCities } from '../cities/citiesSlice';
 import { loadTours } from '../tours/toursSlice';
 import type TourType from '../tours/types/TourType';
 
+
 function Tour(): JSX.Element {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -17,10 +18,12 @@ function Tour(): JSX.Element {
     dispatch(loadTours());
   }, [dispatch]);
 
+
   const tours: TourType[] = useSelector(
     (state: RootState) => state.tours.toursList,
   );
-  if (tours.length === 0) {
+
+if (tours.length === 0) {
     return <h1>Loading</h1>;
   }
   if (

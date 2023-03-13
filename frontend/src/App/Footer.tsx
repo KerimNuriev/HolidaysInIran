@@ -18,13 +18,13 @@ function Footer(): JSX.Element {
               <Link to="/">Главная</Link>
             </li>
             <li>
-              <Link to="/tour8">Туры на 8 дней</Link>
+              <Link to="/tour/1">Туры на 8 дней</Link>
             </li>
             <li>
-              <Link to="/tour10">Туры на 10 дней</Link>
+              <Link to="/tour/2">Туры на 10 дней</Link>
             </li>
             <li>
-              <Link to="/mytour">Индивидуальные туры</Link>
+              <Link to="/tour/3">Индивидуальные туры</Link>
             </li>
             <li>
               <Link to="/faq">Информация для туристов</Link>
