@@ -56,10 +56,13 @@ nav {
   color: #e09a84;
   border: 1px solid #e09a84;
   border-radius: 50%;
-  padding: 5px;
+  padding: 0px 10px;
   transition: 1s;
+  margin-top: 0 !important;
+  margin-left: 5px !important;
 }
 .language:hover {
-  color: #a47060;
+  color: #ffffff;
+  background: #a47060;
   border: 1px solid #a47060;
 }

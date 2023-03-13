@@ -46,6 +46,18 @@ input {
   border: 0;
   border-bottom: 1px solid #4e4951;
 }
+::-webkit-input-placeholder {
+  color: #988291;
+}
+:-moz-placeholder {
+  color: #988291;
+}
+::-moz-placeholder {
+  color: #988291;
+}
+:-ms-input-placeholder {
+  color: #988291;
+}
 button {
   background: transparent;
   color: #eba18a;
