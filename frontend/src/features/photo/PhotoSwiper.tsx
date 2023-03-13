@@ -4,15 +4,21 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Navigation } from 'swiper';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../store';
+import PhotoCard from './PhotoCard';
 
 function PhotoSwiper(): JSX.Element {
+  const photoList = useSelector((state: RootState) => state.photo.photoList);
+
   return (
     <div id="tour-swiper">
       <Swiper
         slidesPerView={5}
         spaceBetween={0}
-        rewind={true}
+        rewind
         centeredSlides={false}
+        loop
         autoplay={{
           delay: 9000,
           disableOnInteraction: false,
@@ -43,106 +49,15 @@ function PhotoSwiper(): JSX.Element {
             spaceBetween: 0,
           },
         }}
-        navigation={true}
+        navigation
         modules={[Autoplay, Navigation]}
         className="tour-swiper"
       >
-        <SwiperSlide>
-          <div className="tours__img">
-            <img
-              src="https://skazki-na-noch.ru/wp-content/themes/skazki/voini/photo1.jpeg"
-              alt="contact"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="tours__img">
-            <img
-              src="https://skazki-na-noch.ru/wp-content/themes/skazki/voini/photo2.jpeg"
-              alt="contact"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="tours__img">
-            <img
-              src="https://skazki-na-noch.ru/wp-content/themes/skazki/voini/photo3.jpeg"
-              alt="contact"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="tours__img">
-            <img
-              src="https://skazki-na-noch.ru/wp-content/themes/skazki/voini/photo4.jpeg"
-              alt="contact"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="tours__img">
-            <img
-              src="https://skazki-na-noch.ru/wp-content/themes/skazki/voini/photo5.jpeg"
-              alt="contact"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="tours__img">
-            <img
-              src="https://skazki-na-noch.ru/wp-content/themes/skazki/voini/photo6.jpg"
-              alt="contact"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="tours__img">
-            <img
-              src="https://skazki-na-noch.ru/wp-content/themes/skazki/voini/photo7.jpg"
-              alt="contact"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="tours__img">
-            <img
-              src="https://skazki-na-noch.ru/wp-content/themes/skazki/voini/photo8.jpg"
-              alt="contact"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="tours__img">
-            <img
-              src="https://skazki-na-noch.ru/wp-content/themes/skazki/voini/photo9.jpg"
-              alt="contact"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="tours__img">
-            <img
-              src="https://skazki-na-noch.ru/wp-content/themes/skazki/voini/photo10.jpg"
-              alt="contact"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="tours__img">
-            <img
-              src="https://skazki-na-noch.ru/wp-content/themes/skazki/voini/photo11.jpg"
-              alt="contact"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="tours__img">
-            <img
-              src="https://skazki-na-noch.ru/wp-content/themes/skazki/voini/photo12.jpg"
-              alt="contact"
-            />
-          </div>
-        </SwiperSlide>
+        {photoList.map((elem) => (
+          <SwiperSlide key={elem.id}>
+            <PhotoCard elem={elem} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

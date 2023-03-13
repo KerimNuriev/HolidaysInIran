@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import assert from 'assert';
 import type CityState from './types/CityState';
 import * as apiCity from './apiCity';
 import type CityType from './types/CityType';
@@ -6,6 +7,7 @@ import type { CityId } from './types/CityType';
 
 const initialState: CityState = {
   citiesList: [],
+  myTourCities: [],
 };
 
 // thunk - это экшен, который связан с асинхронной операцией (api)
@@ -60,6 +62,11 @@ const citiesSlice = createSlice({
       .addCase(loadCities.fulfilled, (state, action) => {
         // то мы делаем вот это со стэйтом
         state.citiesList = action.payload;
+        state.myTourCities.length = 5;
+        const city = state.citiesList.find((el) => el.cityNameEn === 'Tehran');
+        assert(city);
+        state.myTourCities.unshift(city);
+        state.myTourCities.push(city);
       })
       .addCase(addCities.fulfilled, (state, action) => {
         state.citiesList = [action.payload, ...state.citiesList];
@@ -69,6 +76,7 @@ const citiesSlice = createSlice({
           (city) => city.id !== action.payload,
         );
       });
+
     //   .addCase(updateNote.fulfilled, (state, action) => {
     //     // ! - означает гарантию, что такой объект - есть, это - нерекомендуемая практика
     //     // так как снижает защиту типизации

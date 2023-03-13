@@ -1,20 +1,24 @@
 import React, { useState, useCallback } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import type { RootState } from '../../store';
 import { useAppDispatch } from '../../store';
-import { login } from './adminSlice';
+import { login, resetLoginFormError } from './adminSlice';
 
 function FormAuth(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const error = useSelector((state: RootState) => state.admin.loginFormError);
+
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
   const handleNameChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setUserName(event.target.value);
-      // 332 очищаем ошибку
+      dispatch(resetLoginFormError());
     },
     [],
   );
@@ -22,7 +26,7 @@ function FormAuth(): JSX.Element {
   const handlePasswordChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setPassword(event.target.value);
-      // 332 очищаем ошибку
+      dispatch(resetLoginFormError());
     },
     [],
   );
@@ -38,12 +42,14 @@ function FormAuth(): JSX.Element {
         }),
       );
 
-      // 332 проверяем, что санк login зарезолвился успешно
       if (login.fulfilled.match(dispatchResult)) {
         navigate('/');
       }
 
       // 332 выводим в консоль ошибку если санк login зареджектился
+      if (login.rejected.match(dispatchResult)) {
+        console.error(dispatchResult.error.message);
+      }
     },
     [dispatch, userName, navigate, password],
   );
@@ -71,6 +77,7 @@ function FormAuth(): JSX.Element {
               Войти
             </Button>
           </Form>
+          {error && <div style={{ display: 'block' }}>{error}</div>}
         </div>
       </div>
     </div>

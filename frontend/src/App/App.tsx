@@ -18,6 +18,7 @@ import { getAdmin } from '../features/admin/adminSlice';
 import Contact from '../features/contact/Contact';
 import Account from '../features/account/Account';
 import { loadDays } from '../features/days/daysSlice';
+import { loadPhotos } from '../features/photo/photosSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -30,6 +31,7 @@ function App(): JSX.Element {
     dispatch(loadCities());
     dispatch(loadTours());
     dispatch(loadDays());
+    dispatch(loadPhotos());
   }, [dispatch]);
 
   useEffect(() => {
@@ -50,7 +52,7 @@ function App(): JSX.Element {
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/tour/:id" element={<Tour />} />
-        <Route path="/mytour" element={<MyTour />} />
+        <Route path="/tour/mytour" element={<MyTour />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/admin" element={<Admin />} />
         {admin && <Route path="/account" element={<Account />} />}

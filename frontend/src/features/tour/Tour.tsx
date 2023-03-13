@@ -1,17 +1,14 @@
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../store"
 import type { RootState } from "../../store"
 import DaysSwiper from "../days/DaysSwiper"
-import { loadCities } from "../cities/citiesSlice";
-import { loadTours } from "../tours/toursSlice";
 import './Tour.scss'
 import TourTitle from "./TourTitle";
 import Schedules from "./Schedules";
-import ToursForm from "../home/ToursForm/ToursForm";
+import ToursForm from "../toursForm/ToursForm";
 import DayInfo from "./DayInfo";
-import type DayType from "../days/types/DayType";
 import { chooseDay } from "../days/daysSlice"
 import TourInfo from "./TourInfo";
 

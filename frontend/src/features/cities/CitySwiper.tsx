@@ -20,6 +20,7 @@ const citiesList = useSelector((state: RootState) => state.cities.citiesList)
       spaceBetween={30}
       rewind={true}
       centeredSlides={false}
+      loop
       autoplay={{
         delay: 5000,
         disableOnInteraction: false,

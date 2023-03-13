@@ -5,6 +5,8 @@ import citiesReducer from './features/cities/citiesSlice';
 import daysReducer from './features/days/daysSlice';
 import toursReducer from './features/tours/toursSlice';
 import adminReducer from './features/admin/adminSlice';
+import photosReducer from './features/photo/photosSlice';
+import tourFormReducer from './features/toursForm/TourFormSlice';
 
 const store = configureStore({
   reducer: {
@@ -16,6 +18,9 @@ const store = configureStore({
     cities: citiesReducer,
     days: daysReducer,
     tours: toursReducer,
+    toursForm: tourFormReducer,
+
+    photo: photosReducer,
   },
 });
 
