@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import type { RootState} from '../../store';
@@ -18,11 +18,14 @@ function ToursForm({defaultSchedule}: {defaultSchedule: string | undefined}): JS
   
   const loadError = useSelector((state: RootState) => state.toursForm.loadError);
   
+
+
   
     // Все данные с инпутов и селектов приходят сюда по нажатию
   const handleSubmitForm = useCallback(async (event: React.FormEvent): Promise<void> => {
     event.preventDefault();
     const application = {name, email, phone, tour, date, connection}
+    console.log(application);
     const result = await dispatch(loadApplication({application}))
     if (loadApplication.fulfilled.match(result)) {
       setName('')
@@ -56,6 +59,7 @@ const handleChangeTour: React.ChangeEventHandler<HTMLSelectElement> = useCallbac
 }, [dispatch])
 
 const handleChangeDate: React.ChangeEventHandler<HTMLInputElement> = useCallback((event): void => {
+  console.log(date);
     setDate(event.target.value)
     dispatch(resetLoadError())
 }, [dispatch])
@@ -71,6 +75,16 @@ const tours = useSelector((state: RootState) => state.tours.toursList)
 const { id } = useParams()
 const [oneTour] = tours.filter((el) => el.id === Number(id))
 
+useEffect(() => {
+  if(defaultSchedule) {
+    setDate(defaultSchedule)
+  }
+  if(id) {
+    setTour(oneTour.title)
+  }
+},[id, defaultSchedule])
+
+
   return (
     <div className="application">
       <div className="form-overlay">
@@ -85,7 +99,7 @@ const [oneTour] = tours.filter((el) => el.id === Number(id))
             <input type="email" value={email} onChange={handleChangeEmail} placeholder="Ваша email" />
             <input type="text" maxLength={12} value={phone} onChange={handleChangePhone} placeholder="Ваш телефон +7" />
             {id ?
-             (<input type="text" defaultValue={oneTour.title} />)
+             (<input type="text" value={tour}  />)
              : 
             <select style={{marginBottom: 10}} value={tour} onChange={handleChangeTour}>
             (<option defaultValue="Выберите желаемый тур">Выберите желаемый тур</option>
@@ -93,12 +107,12 @@ const [oneTour] = tours.filter((el) => el.id === Number(id))
             </select>
              }
             <select value={connection} onChange={handleChangeConnection}>
-            <option disabled defaultValue="Как с вами можно связаться">Как с вами можно связаться</option>
+            <option defaultValue="Как с вами можно связаться">Как с вами можно связаться</option>
             <option>По почте</option>
             <option>По телефону</option>
             </select>
             {defaultSchedule? 
-            <input type="text" defaultValue={defaultSchedule}  onChange={handleChangeDate} />
+            <input type="text" value={date} onChange={handleChangeDate} />
              : 
             <input type="text" value={date} onChange={handleChangeDate} placeholder="Желаемые даты" />
              }
