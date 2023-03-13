@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type FormApplicationType from './types/FormApplicationType';
 import tourApplication from './apiTourForm';
+import type FormApplicationType from './types/FormApplicationType';
 
 const initialState: FormApplicationType = {
     name: '', 

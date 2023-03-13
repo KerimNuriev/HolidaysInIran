@@ -13,25 +13,12 @@ function ToursForm(): JSX.Element {
   const [phone, setPhone] = useState('');
   const [date, setDate] = useState('');
   const [connection, setConnection] = useState('');
-  const [susses, setSusses] = useState(false);
-  const [erorr, setErorr] = useState(false);
   
     // Все данные с инпутов и селектов приходят сюда по нажатию
   const handleSubmitForm = useCallback(async (event: React.FormEvent<Element>) => {
     event.preventDefault();
     const application = {name, email, phone, tour, date, connection}
     const result = await dispatch(applic(application))
-    if (result.payload === 'susses') {
-      setSusses((prev)=> !prev)
-      setName('')
-      setEmail('')
-      setPhone('')
-      setDate('')
-      setConnection('')
-      setTour('')
-    } else {
-      setErorr((prev)=> !prev)
-    }
     
     }, [connection, date, dispatch, email, name, phone, tour])
 
@@ -80,16 +67,14 @@ const handleChangeConnection: React.ChangeEventHandler<HTMLSelectElement> = useC
             </select>
             <input type="text" value={date} onChange={handleChangeDate} placeholder="Желаемые даты" />
             <button type="submit">Отправить</button>
-            {susses && 
+            {/* {susses && 
             <div className="form">
               <h3>Заявка успешно отправлена</h3>
-              <button type="button" onClick={() => setSusses((prev)=> !prev)}>Ok</button>
             </div>}
             {erorr && 
             <div className="form">
               <h3>Заполните все поля!</h3>
-              <button type="button" onClick={() => setErorr((prev)=> !prev)}>Ok</button>
-            </div>}
+            </div>} */}
           </form>
         </div>
       </div>

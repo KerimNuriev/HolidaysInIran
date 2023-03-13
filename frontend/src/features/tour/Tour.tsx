@@ -34,10 +34,10 @@ const chosenTour = tours.filter((tour) => tour.id === Number(id))
 const [oneTour] = chosenTour
 const x = [...oneTour.Days]
 
-console.log(oneTour);
+// console.log(oneTour);
 const sortedOneTour = {...oneTour, Days: [...x.sort((a,b) => a.number_day - b.number_day)]}
 
-console.log(sortedOneTour);
+// console.log(sortedOneTour);
 
 
 return (
