@@ -1,8 +1,9 @@
 type CityType = {
-    id: number;
-    cityName: string;
-    description: string;
-    image: string;
-}
+  id: number;
+  cityName: string;
+  descriptionRu: string;
+  descriptionEn: string;
+  image: string;
+};
 
 export default CityType;

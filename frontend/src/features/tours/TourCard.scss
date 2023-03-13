@@ -1,0 +1,126 @@
+.card {
+  --bs-card-bg: transparent !important;
+}
+.clearfix:before,
+.clearfix:after {
+  content: '';
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.tours__item {
+  overflow: hidden;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+.tours__item figure {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  overflow: hidden;
+  background: rgba(22, 24, 44, 0.5);
+  text-align: center;
+  cursor: pointer;
+}
+.tours__item figure img {
+  position: relative;
+  display: block;
+  min-height: 100%;
+}
+.tours__item figure figcaption {
+  padding: 1em;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.25em;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+}
+.tours__item figure figcaption::before,
+.tours__item figure figcaption::after {
+  pointer-events: none;
+}
+.tours__item figure figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.tours__item figure h3 {
+  word-spacing: -0.15em;
+  font-weight: 300;
+}
+.tours__item figure h3 span {
+  font-weight: 800;
+}
+.tours__item figure h3,
+.tours__item figure p {
+  margin: 0;
+}
+.tours__item figure p {
+  letter-spacing: 1px;
+  font-size: 1em;
+}
+
+/* Эффект при наведении */
+figure.tours__figure img {
+  width: calc(100% + 10px);
+  transition: opacity 0.35s, transform 0.35s;
+  transform: scale(1.1);
+}
+figure.tours__figure figcaption {
+  top: auto;
+  bottom: 0;
+  height: 45%;
+  text-align: left;
+}
+figure.tours__figure h3,
+figure.tours__figure p {
+  transform: translate3d(0, 40px, 0);
+}
+figure.tours__figure h3 {
+  color: #eba18a !important;
+  font-size: 1.15rem;
+  transition: transform 0.35s;
+  padding: 10px;
+  background: rgba(22, 17, 23, 0.8);
+  border: 1px solid #4c4542;
+}
+figure.tours__figure p {
+  color: #fff;
+  font-weight: 800;
+  padding: 10px;
+  opacity: 0;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.2s, transform 0.35s;
+}
+figure.tours__figure:hover img,
+figure.tours__figure:hover p {
+  opacity: 1;
+}
+figure.tours__figure:hover img,
+figure.tours__figure:hover h3,
+figure.tours__figure:hover p {
+  transform: translate3d(0, 0, 0);
+}
+figure.tours__figure:hover p {
+  transition-delay: 0.05s;
+  transition-duration: 0.35s;
+}
+.tours__img {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+}
+.tours__img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 1s;
+}

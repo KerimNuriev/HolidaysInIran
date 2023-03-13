@@ -16,7 +16,6 @@ const store = configureStore({
     cities: citiesReducer,
     days: daysReducer,
     tours: toursReducer,
-
   },
 });
 

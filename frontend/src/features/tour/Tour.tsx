@@ -44,8 +44,8 @@ if (tours.length===0) {
     navigate('/notfound')
   }
 
-  return (
-    <div className="tourContainer">
+    return (
+      <div className="tourContainer">
     <div className="oneTourTitle">
      <TourTitle oneTour={oneTour}/>
     </div>
@@ -55,15 +55,15 @@ if (tours.length===0) {
     <div>
       <DayInfo day={day}/>
     </div>
-    <div>
-      <TourInfo oneTour={oneTour}/>
+        <div>
+           <TourInfooneTour={oneTour}/>
+        </div>
+        <div>
+            <Schedules schedules={oneTour.Schedules} onClick={onChooseSchedule}/>
     </div>
-    <div>
-       <Schedules schedules={oneTour.Schedules} onClick={onChooseSchedule}/>
-    </div>
-    <ToursForm defaultSchedule={defaultSchedule}/>
-    </div>
-  )
+    <ToursForm defaultSchedule={defaultSchedule} />
+       </div>
+    );
 }
 
-export default Tour
+export default Tour;

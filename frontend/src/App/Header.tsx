@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, memo } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import {
   Button,
@@ -12,6 +12,8 @@ import {
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { Prev } from 'react-bootstrap/esm/PageItem';
 import logo from '../logo.png';
 import './Header.scss';
 import type { RootState } from '../store';
@@ -20,10 +22,17 @@ import { logout } from '../features/admin/adminSlice';
 
 function Header(): JSX.Element {
   const admin = useSelector((state: RootState) => state.admin.admin);
+  const { t, i18n } = useTranslation();
+  const [lang, setLang] = useState(i18n.language);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const tours = useSelector((state: RootState) => state.tours.toursList);
+
+  const handleLang = (): void => {
+    setLang((prev) => (prev === 'ru' ? 'en' : 'ru'));
+    i18n.changeLanguage(lang === 'ru' ? 'en' : 'ru');
+  };
 
   const handleLogout = React.useCallback(
     async (event: React.MouseEvent) => {
@@ -43,7 +52,7 @@ function Header(): JSX.Element {
         <Navbar key={expand} expand={expand} className="mb-3">
           <Container fluid>
             <LinkContainer to="/">
-              <Nav.Link eventKey={11}>
+              <Nav.Link>
                 <img src={logo} className="logo" alt="logo" />
               </Nav.Link>
             </LinkContainer>
@@ -59,10 +68,10 @@ function Header(): JSX.Element {
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <LinkContainer to="/">
-                    <Nav.Link eventKey={12}>Главная</Nav.Link>
+                    <Nav.Link>{t('Главная')}</Nav.Link>
                   </LinkContainer>
                   <NavDropdown
-                    title="Туры в Иран"
+                    title={t('Туры в Иран')}
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
                     {tours.length > 0 ? (
@@ -80,30 +89,33 @@ function Header(): JSX.Element {
                       <> </>
                     )}
                     <LinkContainer to="/mytour">
-                      <NavDropdown.Item eventKey={13}>
-                        Индивидуальные туры
+                      <NavDropdown.Item>
+                        {t('Индивидуальные туры')}
                       </NavDropdown.Item>
                     </LinkContainer>
                   </NavDropdown>
                   <LinkContainer to="/faq">
-                    <Nav.Link>Информация для туристов</Nav.Link>
+                    <Nav.Link>{t('Информация для туристов')}</Nav.Link>
                   </LinkContainer>
                   <LinkContainer to="/contact">
-                    <Nav.Link>Контакты</Nav.Link>
-                  </LinkContainer>
-                  <LinkContainer to="/">
-                    <Nav.Link eventKey={14}>{admin?.userName}</Nav.Link>
+                    <Nav.Link>{t('Контакты')}</Nav.Link>
                   </LinkContainer>
                   {admin && (
-                    <button type="button" onClick={handleLogout}>
-                      Выйти
-                    </button>
+                    <>
+                      <LinkContainer to="/account">
+                        <Nav.Link eventKey={14}>{admin?.userName}</Nav.Link>
+                      </LinkContainer>
+                      <LinkContainer to="/">
+                        <Nav.Link onClick={handleLogout}>Выйти</Nav.Link>
+                      </LinkContainer>
+                    </>
                   )}
-                  <LinkContainer to="/contact">
-                    <Nav.Link>
-                      <span className="language">Ru</span>
-                    </Nav.Link>
-                  </LinkContainer>
+
+                  <Nav.Link>
+                    <button type="button" onClick={handleLang}>
+                      {lang}
+                    </button>
+                  </Nav.Link>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -114,4 +126,4 @@ function Header(): JSX.Element {
   );
 }
 
-export default Header;
+export default memo(Header);
