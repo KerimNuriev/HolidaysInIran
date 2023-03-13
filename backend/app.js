@@ -20,7 +20,7 @@ app.use('/', logoRegoRouter);
 app.use('/api/city', cityRouter);
 app.use('/api/day', dayRouter);
 app.use('/api/tour', tourRouter);
-app.use('/telegramBot', telegramBotRouter);
+app.use('/api/telegramBot', telegramBotRouter);
 
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT}, port `);

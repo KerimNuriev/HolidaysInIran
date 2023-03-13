@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import * as api from './apiTourForm';
+import  tourApplication  from './apiTourForm'
 import type FormApplicationType from './types/FormApplicationType';
 
 const initialState: FormApplicationType = {
@@ -15,7 +15,7 @@ const initialState: FormApplicationType = {
 export const loadApplication = createAsyncThunk(
     'toursForm/loadApplication',
     async ({application}: {application: FormApplicationType}) => {
-    await api.tourApplication({application})
+    await tourApplication({application})
     return application;
 });
 
@@ -25,10 +25,6 @@ const tourFormSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-        .addCase(loadApplication.pending, (state, action) => {
-            state.loading = true;
-            state.loadError = undefined;
-           })
         .addCase(loadApplication.fulfilled, (state, action) => {
          state.loading = false;
          state.name = action.payload.name;
@@ -40,7 +36,7 @@ const tourFormSlice = createSlice({
         })
         .addCase(loadApplication.rejected, (state, action) => {
            state.loadError = action.error.message;
-           })
+        })
     },
 });
 

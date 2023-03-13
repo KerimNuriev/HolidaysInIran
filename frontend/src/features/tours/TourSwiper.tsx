@@ -17,7 +17,7 @@ function TourSwiper(): JSX.Element {
       spaceBetween={500}
       slidesPerView={3}
       onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
+      // onSwiper={(swiper) => console.log(swiper)}
     >
       {toursList?.map((tour) => (
         <SwiperSlide key={tour.id}>
