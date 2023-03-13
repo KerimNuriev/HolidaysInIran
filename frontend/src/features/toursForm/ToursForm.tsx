@@ -84,15 +84,14 @@ const [oneTour] = tours.filter((el) => el.id === Number(id))
             <input type="text" value={name} onChange={handleChangeName} placeholder="Ваше имя" />
             <input type="email" value={email} onChange={handleChangeEmail} placeholder="Ваша email" />
             <input type="text" maxLength={12} value={phone} onChange={handleChangePhone} placeholder="Ваш телефон +7" />
-            <select style={{marginBottom: 10}} value={tour} onChange={handleChangeTour}>
             {id ?
-             (<option defaultValue={oneTour.title}>{oneTour.title}</option>)
-             : <>
+             (<input type="text" defaultValue={oneTour.title} />)
+             : 
+            <select style={{marginBottom: 10}} value={tour} onChange={handleChangeTour}>
             (<option defaultValue="Выберите желаемый тур">Выберите желаемый тур</option>
             {tours?.map((el) => <option key={el.id}> {el.title} </option>)})
-            </>
-             }
             </select>
+             }
             <select value={connection} onChange={handleChangeConnection}>
             <option disabled defaultValue="Как с вами можно связаться">Как с вами можно связаться</option>
             <option>По почте</option>

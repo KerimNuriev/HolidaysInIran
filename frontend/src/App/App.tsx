@@ -50,7 +50,7 @@ function App(): JSX.Element {
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/tour/:id" element={<Tour />} />
-        <Route path="/mytour" element={<MyTour />} />
+        <Route path="/tour/mytour" element={<MyTour />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/admin" element={<Admin />} />
         {admin && <Route path="/account" element={<Account />} />}
