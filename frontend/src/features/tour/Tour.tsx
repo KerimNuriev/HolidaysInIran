@@ -7,7 +7,7 @@ import DaysSwiper from "../days/DaysSwiper"
 import './Tour.scss'
 import TourTitle from "./TourTitle";
 import Schedules from "./Schedules";
-import ToursForm from "../home/ToursForm/ToursForm";
+import ToursForm from "../toursForm/ToursForm";
 import DayInfo from "./DayInfo";
 import { chooseDay } from "../days/daysSlice"
 import TourInfo from "./TourInfo";
