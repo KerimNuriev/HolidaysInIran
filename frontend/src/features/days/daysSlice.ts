@@ -1,10 +1,12 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import type {PayloadAction} from '@reduxjs/toolkit';
 import type DaysState from './types/DayState';
 import * as apiDays  from './apiDays';
 
 const initialState: DaysState = {
   daysList: [],
+  day: {},
 };
 
 // thunk - это экшен, который связан с асинхронной операцией (api)
@@ -35,7 +37,12 @@ export const loadDays = createAsyncThunk(
 const daysSlice = createSlice({
   name: 'days',
   initialState,
-  reducers: {},
+  reducers: {
+    chooseDay: (state, action: PayloadAction<{id: number | undefined}>) => {
+      state.day = state.daysList.find(day => day.id === action.payload.id)
+
+    }
+  },
   // здесь мы прописываем, что произойдёт со стэйтом после исполнения асинхронной операции (из thunk)
   extraReducers: (builder) => {
     // если loadNotes завершилось успешно (fulfilled)
@@ -43,6 +50,7 @@ const daysSlice = createSlice({
       .addCase(loadDays.fulfilled, (state, action) => {
         // то мы делаем вот это со стэйтом
         state.daysList = action.payload;
+        state.day = {}
       })
     //   .addCase(updateNote.fulfilled, (state, action) => {
     //     // ! - означает гарантию, что такой объект - есть, это - нерекомендуемая практика
@@ -52,5 +60,7 @@ const daysSlice = createSlice({
     //   });
   },
 });
+
+export const { chooseDay } = daysSlice.actions;
 
 export default daysSlice.reducer;
