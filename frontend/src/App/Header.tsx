@@ -67,17 +67,17 @@ function Header(): JSX.Element {
                   >
                     {tours.length > 0 ? (
                       tours.map((tour) => (
-                        <>
-                          <LinkContainer key={tour.id} to={`/tour/${tour.id}`}>
+                        <React.Fragment key={tour.id} >
+                          <LinkContainer to={`/tour/${tour.id}`}>
                             <NavDropdown.Item eventKey={tour.id}>
                               {tour.title}
                             </NavDropdown.Item>
                           </LinkContainer>
                           <NavDropdown.Divider />
-                        </>
+                        </React.Fragment>
                       ))
                     ) : (
-                      <></>
+                      <> </>
                     )}
                     <LinkContainer to="/mytour">
                       <NavDropdown.Item eventKey={13}>

@@ -17,7 +17,6 @@ router.route('/').get(async (req, res) => {
         },
       ],
     });
-    console.log(tours[0].Days)
     res.json(tours);
   } catch (error) {
     res.json({ error: error.message });

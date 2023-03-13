@@ -8,10 +8,9 @@ function Home(): JSX.Element {
     <>
       <CitySwiper />
       <div className="container">
-        <h1>Ya est' home!</h1>
         <TourSwiper />
       </div>
-      <ToursForm />
+      <ToursForm defaultSchedule={undefined} />
     </>
   );
 }
