@@ -9,10 +9,12 @@ async function tourApplication({application}: {application: FormApplicationType}
         'Content-Type': 'application/json',
       },
     });
+    const data = await res.json();
+
     if (res.ok) {
-      console.log('ok')
-    }
+    return data;
+    } throw new Error(data.message);
+    
 }
 
 export default tourApplication;
-

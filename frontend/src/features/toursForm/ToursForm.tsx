@@ -1,11 +1,9 @@
 import React, { memo, useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import type { RootState} from '../../store';
 import { useAppDispatch } from '../../store';
-import { loadApplication } from './TourFormSlice';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import type { RootState } from '../../../store';
+import { loadApplication, resetLoadError } from './TourFormSlice';
 import './ToursForm.scss'
 
 function ToursForm({defaultSchedule}: {defaultSchedule: string | undefined}): JSX.Element {
@@ -18,45 +16,54 @@ function ToursForm({defaultSchedule}: {defaultSchedule: string | undefined}): JS
   const [date, setDate] = useState('');
   const [connection, setConnection] = useState('');
   
-  const loading = useSelector((state: RootState) => state.toursForm.loading);
   const loadError = useSelector((state: RootState) => state.toursForm.loadError);
   
   
     // Все данные с инпутов и селектов приходят сюда по нажатию
   const handleSubmitForm = useCallback(async (event: React.FormEvent): Promise<void> => {
     event.preventDefault();
-    const application = {loading, name, email, phone, tour, date, connection}
-    const result = await dispatch(loadApplication({application}));
-    console.log(loadError);
+    const application = {name, email, phone, tour, date, connection}
+    const result = await dispatch(loadApplication({application}))
     if (loadApplication.fulfilled.match(result)) {
-      console.log(loadError);
+      setName('')
+      setEmail('')
+      setPhone('')
+      setDate('')
+      setConnection('')
+      setTour('')
     }
     
-    }, [connection, date, dispatch, email, loadError, loading, name, phone, tour])
+    }, [connection, date, dispatch, email, name, phone, tour])
 
   const handleChangeName: React.ChangeEventHandler<HTMLInputElement> = useCallback((event): void => {
     setName(event.target.value)
-}, [])
+    dispatch(resetLoadError())
+}, [dispatch])
 
 const handleChangePhone: React.ChangeEventHandler<HTMLInputElement> = useCallback((event): void => {
     setPhone(event.target.value)
-}, [])
+    dispatch(resetLoadError())
+}, [dispatch])
 
 const handleChangeEmail: React.ChangeEventHandler<HTMLInputElement> = useCallback((event): void => {
     setEmail(event.target.value)
-}, [])
+    dispatch(resetLoadError())
+}, [dispatch])
 
 const handleChangeTour: React.ChangeEventHandler<HTMLSelectElement> = useCallback((event): void => {
     setTour(event.target.value)
-}, [])
+    dispatch(resetLoadError())
+}, [dispatch])
 
 const handleChangeDate: React.ChangeEventHandler<HTMLInputElement> = useCallback((event): void => {
     setDate(event.target.value)
-}, [])
+    dispatch(resetLoadError())
+}, [dispatch])
 
 const handleChangeConnection: React.ChangeEventHandler<HTMLSelectElement> = useCallback((event): void => {
     setConnection(event.target.value)
-}, [])
+    dispatch(resetLoadError())
+}, [dispatch])
 
 
 // для условного рендеринга доступных туров и автозаполнения дат
@@ -72,7 +79,7 @@ const [oneTour] = tours.filter((el) => el.id === Number(id))
           {loadError &&
             (<div className="form"> 
              <span style={{ color: 'red' }}>{loadError}</span>
-            </div>)}
+            </div>) }
           <form className="form" onSubmit={handleSubmitForm}>
             <input type="text" value={name} onChange={handleChangeName} placeholder="Ваше имя" />
             <input type="email" value={email} onChange={handleChangeEmail} placeholder="Ваша email" />
@@ -96,11 +103,10 @@ const [oneTour] = tours.filter((el) => el.id === Number(id))
              : 
             <input type="text" value={date} onChange={handleChangeDate} placeholder="Желаемые даты" />
              }
-            
             <button type="submit">Отправить</button>
           </form>
         </div>
-  
+            
       </div>
     </div>
   );

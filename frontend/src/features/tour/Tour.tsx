@@ -9,7 +9,7 @@ import { loadTours } from "../tours/toursSlice";
 import './Tour.scss'
 import TourTitle from "./TourTitle";
 import Schedules from "./Schedules";
-import ToursForm from "../home/ToursForm/ToursForm";
+import ToursForm from "../toursForm/ToursForm";
 import DayInfo from "./DayInfo";
 import type DayType from "../days/types/DayType";
 import { chooseDay } from "../days/daysSlice"

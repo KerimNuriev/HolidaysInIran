@@ -1,5 +1,4 @@
  type FormApplicationType = {
-   loading: boolean,
    loadError?: string;
    name: string, 
    email: string,
