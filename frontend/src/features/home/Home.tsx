@@ -15,7 +15,6 @@ function Home(): JSX.Element {
       <ToursForm defaultSchedule={undefined} />
       <div className="container">
         <h2 className="main-title">Путешествия по Ирану</h2>
-        <PhotoSwiper />
       </div>
     </>
   );

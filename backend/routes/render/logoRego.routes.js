@@ -39,22 +39,28 @@ router.route('/register').post(async (req, res) => {
 });
 
 router.route('/login').post(async (req, res) => {
-  const { userName, password } = req.body;
-  const existingAdmin = await Admin.findOne({ where: { userName } });
+  try {
+    const { userName, password } = req.body;
+    const existingAdmin = await Admin.findOne({ where: { userName } });
 
-  // проверяем, что такой пользователь есть в БД и пароли совпадают
-  if (
-    existingAdmin &&
-    (await bcrypt.compare(password, existingAdmin.password))
-  ) {
-    // кладём id нового пользователя в хранилище сессии (логиним пользователя)
-    req.session.adminId = existingAdmin.id;
-    req.session.admin = existingAdmin;
-    res.json({ id: existingAdmin.id, userName: existingAdmin.name });
-  } else {
-    res
-      .status(401)
-      .json({ error: 'Такого пользователя нет, либо пароли не совпадают' });
+    // проверяем, что такой пользователь есть в БД и пароли совпадают
+    if (
+      existingAdmin &&
+      (await bcrypt.compare(password, existingAdmin.password))
+    ) {
+      // кладём id нового пользователя в хранилище сессии (логиним пользователя)
+      req.session.adminId = existingAdmin.id;
+      req.session.admin = existingAdmin;
+      res.json({ id: existingAdmin.id, userName: existingAdmin.name });
+    } else {
+      res
+        .status(401)
+        .json({ error: 'Такого пользователя нет либо пароли не совпадают' });
+    }
+  } catch (error) {
+    console.error(error);
+    // res.status(500).json({ message: error.message });
+    res.status(500).json({ message: 'Unexpected server error. Try later.' });
   }
 });
 

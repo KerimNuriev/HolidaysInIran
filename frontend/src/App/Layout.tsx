@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import Moments from './Momets';
+import PhotoSwiper from '../features/photo/PhotoSwiper';
 
 function Layout(): JSX.Element {
   return (
@@ -12,6 +13,7 @@ function Layout(): JSX.Element {
         <Outlet />
         <Moments />
       </div>
+      <PhotoSwiper />
       <Footer />
     </div>
   );
