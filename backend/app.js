@@ -8,6 +8,7 @@ const cityRouter = require('./routes/api/city.routes');
 const dayRouter = require('./routes/api/day.routes');
 const tourRouter = require('./routes/api/tour.routes');
 const photoRouter = require('./routes/api/photo.routes');
+const telegramBotRouter = require('./routes/api/telegramBot.routes');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use('/api/city', cityRouter);
 app.use('/api/day', dayRouter);
 app.use('/api/tour', tourRouter);
 app.use('/api/photo', photoRouter);
+app.use('/api/telegramBot', telegramBotRouter);
 
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT}, port `);

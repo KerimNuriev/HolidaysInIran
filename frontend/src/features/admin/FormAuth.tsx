@@ -43,9 +43,7 @@ function FormAuth(): JSX.Element {
       );
 
       // 332 проверяем, что санк login зарезолвился успешно
-      if (login.fulfilled.match(dispatchResult)) {
-        navigate('/');
-      }
+     
 
       // 332 выводим в консоль ошибку если санк login зареджектился
     },

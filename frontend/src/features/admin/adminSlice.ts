@@ -83,7 +83,7 @@ const adminSlice = createSlice({
     //   state.user = action.payload;
     //   state.registerFormError = undefined;
     // })
-    // .addCase(register.rejected, (state, action) => {
+    // .addCase(register.rejecadminSliceted, (state, action) => {
     //   state.registerFormError = action.error.message;
     // });
   },
