@@ -76,15 +76,17 @@ function Header(): JSX.Element {
                   >
                     {tours.length > 0 ? (
                       tours.map((tour) => (
-                        <>
-                          <LinkContainer key={tour.id} to={`/tour/${tour.id}`}>
-                            <NavDropdown.Item>{tour.title}</NavDropdown.Item>
+                        <React.Fragment key={tour.id} >
+                          <LinkContainer to={`/tour/${tour.id}`}>
+                            <NavDropdown.Item eventKey={tour.id}>
+                              {tour.title}
+                            </NavDropdown.Item>
                           </LinkContainer>
                           <NavDropdown.Divider />
-                        </>
+                        </React.Fragment>
                       ))
                     ) : (
-                      <></>
+                      <> </>
                     )}
                     <LinkContainer to="/mytour">
                       <NavDropdown.Item>
@@ -109,11 +111,13 @@ function Header(): JSX.Element {
                     </>
                   )}
 
-                  <Nav.Link>
-                    <button type="button" onClick={handleLang}>
-                      {lang}
-                    </button>
-                  </Nav.Link>
+                  <button
+                    type="button"
+                    className="language"
+                    onClick={handleLang}
+                  >
+                    {lang}
+                  </button>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

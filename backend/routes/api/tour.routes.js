@@ -16,7 +16,6 @@ router.route('/').get(async (req, res) => {
         },
       ],
     });
-
     res.json(tours);
   } catch (error) {
     res.json({ error: error.message });

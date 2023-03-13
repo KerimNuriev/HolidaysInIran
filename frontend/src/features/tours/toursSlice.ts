@@ -13,8 +13,8 @@ export const loadTours = createAsyncThunk(
   'tours/loadTours',
   async () => {
     const tours = await apiTour.loadTours();
-    // можем сделать что-то с результатом
 
+    // можем сделать что-то с результатом
     // результат этой функции попадёт в payload в extraReducer
     return tours;
   },
@@ -42,6 +42,7 @@ const toursSlice = createSlice({
       .addCase(loadTours.fulfilled, (state, action) => {
         // то мы делаем вот это со стэйтом
         state.toursList = action.payload;
+        state.toursList.map(tour => tour.Days.sort((a,b) => a.number_day! - b.number_day!))
       })
     //   .addCase(updateNote.fulfilled, (state, action) => {
     //     // ! - означает гарантию, что такой объект - есть, это - нерекомендуемая практика
