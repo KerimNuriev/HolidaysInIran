@@ -10,7 +10,9 @@ import type { RootState } from '../../store';
 import './TourSwiper.scss';
 
 function TourSwiper(): JSX.Element {
-  const toursList = useSelector((state: RootState) => state.tours.toursList);
+  const toursList = useSelector((state: RootState) => state.tours.toursListPlusMyTour);
+
+
 
   return (
     <div id="tour-swiper">

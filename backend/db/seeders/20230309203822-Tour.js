@@ -17,7 +17,7 @@ module.exports = {
       },
       {
         title: 'Тур на 10 дней и 9 ночей',
-        price_1: 250,
+        price_1: 2500,
         price_2: 2750,
         days: 10,
         image: '/image/tour2.jpeg',

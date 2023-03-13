@@ -88,7 +88,7 @@ function Header(): JSX.Element {
                     ) : (
                       <> </>
                     )}
-                    <LinkContainer to="/mytour">
+                    <LinkContainer to="/tour/mytour">
                       <NavDropdown.Item>
                         {t('Индивидуальные туры')}
                       </NavDropdown.Item>
