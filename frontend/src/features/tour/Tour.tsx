@@ -56,7 +56,7 @@ if (tours.length===0) {
       <DayInfo day={day}/>
     </div>
         <div>
-           <TourInfooneTour={oneTour}/>
+           <TourInfo oneTour={oneTour}/>
         </div>
         <div>
             <Schedules schedules={oneTour.Schedules} onClick={onChooseSchedule}/>
